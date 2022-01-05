@@ -1,8 +1,9 @@
-import * as cdk from '@aws-cdk/core';
-import * as iam from '@aws-cdk/aws-iam';
+import { Stack, StackProps } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as iam from "aws-cdk-lib/aws-iam";
 
-export class IamManagementStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+export class IamManagementStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     // Create IAM User
