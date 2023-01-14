@@ -61,5 +61,16 @@ export class EksBasicStack extends cdk.Stack {
       mutable: true,
     });
     cluster.awsAuth.addRoleMapping(consoleRole, { groups: ["system:masters"] });
+
+    // AWS Load Balancer Controller
+    const awsLoadBalancerController = new eks.AlbController(
+      this,
+      "aws-load-balancer-controller",
+      {
+        cluster: cluster,
+        version: eks.AlbControllerVersion.V2_4_1,
+        repository: "public.ecr.aws/eks/aws-load-balancer-controller",
+      }
+    );
   }
 }
