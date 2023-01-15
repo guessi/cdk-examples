@@ -72,5 +72,14 @@ export class EksBasicStack extends cdk.Stack {
         repository: "public.ecr.aws/eks/aws-load-balancer-controller",
       }
     );
+
+    // metrics-server
+    const metricsServer = new eks.HelmChart(this, "metrics-server", {
+      cluster,
+      chart: "metrics-server",
+      repository: "https://kubernetes-sigs.github.io/metrics-server",
+      namespace: "kube-system",
+      release: 'metrics-server',
+    });
   }
 }
