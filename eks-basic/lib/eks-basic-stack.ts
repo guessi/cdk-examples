@@ -79,7 +79,28 @@ export class EksBasicStack extends cdk.Stack {
       chart: "metrics-server",
       repository: "https://kubernetes-sigs.github.io/metrics-server",
       namespace: "kube-system",
-      release: 'metrics-server',
+      release: "metrics-server",
+    });
+
+    // kube-proxy
+    const cfnAddonKubeProxy = new eks.CfnAddon(this, "cfnAddonKubeProxy", {
+      addonName: "kube-proxy",
+      clusterName: cluster.clusterName,
+      resolveConflicts: "OVERWRITE",
+    });
+
+    // coredns
+    const cfnAddonCoreDns = new eks.CfnAddon(this, "cfnAddonCoreDns", {
+      addonName: "coredns",
+      clusterName: cluster.clusterName,
+      resolveConflicts: "OVERWRITE",
+    });
+
+    // vpc-cni
+    const cfnAddonVpcCni = new eks.CfnAddon(this, "cfnAddonVpcCni", {
+      addonName: "vpc-cni",
+      clusterName: cluster.clusterName,
+      resolveConflicts: "OVERWRITE",
     });
   }
 }
