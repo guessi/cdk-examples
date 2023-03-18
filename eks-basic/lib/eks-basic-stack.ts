@@ -9,8 +9,10 @@ export class EksBasicStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    const clusterName = "cdk-eks-cluster";
+
     const cluster = new eks.Cluster(this, "cdk-eks-cluster", {
-      clusterName: "cdk-eks-cluster",
+      clusterName: clusterName,
       version: eks.KubernetesVersion.V1_25,
       endpointAccess: eks.EndpointAccess.PUBLIC_AND_PRIVATE,
       kubectlLayer: new KubectlV25Layer(this, "kubectl"),
@@ -63,19 +65,27 @@ export class EksBasicStack extends cdk.Stack {
     cluster.awsAuth.addRoleMapping(consoleRole, { groups: ["system:masters"] });
 
     // AWS Load Balancer Controller
-    const awsLoadBalancerController = new eks.AlbController(
+    const awsLoadBalancerController = new eks.HelmChart(
       this,
       "aws-load-balancer-controller",
       {
         cluster: cluster,
-        version: eks.AlbControllerVersion.V2_4_1,
-        repository: "public.ecr.aws/eks/aws-load-balancer-controller",
+        chart: "aws-load-balancer-controller",
+        repository: "https://aws.github.io/eks-charts",
+        namespace: "kube-system",
+        release: "aws-load-balancer-controller",
+        version: "1.4.8",
+        values: {
+          clusterName: clusterName,
+          vpcId: cluster.vpc.vpcId,
+          region: cluster.vpc.env.region,
+        },
       }
     );
 
     // metrics-server
     const metricsServer = new eks.HelmChart(this, "metrics-server", {
-      cluster,
+      cluster: cluster,
       chart: "metrics-server",
       repository: "https://kubernetes-sigs.github.io/metrics-server",
       namespace: "kube-system",
