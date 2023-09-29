@@ -72,7 +72,7 @@ export class EksBasicStack extends cdk.Stack {
         repository: "https://aws.github.io/eks-charts",
         namespace: "kube-system",
         release: "aws-load-balancer-controller",
-        version: "1.5.5",
+        version: "1.6.1",
         values: {
           clusterName: clusterName,
           vpcId: cluster.vpc.vpcId,
