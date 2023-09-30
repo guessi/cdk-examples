@@ -1,5 +1,5 @@
-import { CfnOutput, Stack, StackProps, Tags } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
+import { CfnOutput, Stack, StackProps, Tags } from "aws-cdk-lib";
+import { Construct } from "constructs";
 import * as ec2 from "aws-cdk-lib/aws-ec2";
 
 export class VpcWithBastion extends Stack {
@@ -32,17 +32,11 @@ export class VpcWithBastion extends Stack {
 
     // Subnet Tagging
     for (const subnet of vpc.publicSubnets) {
-      Tags.of(subnet).add(
-        "public-subnet",
-        "true",
-      );
+      Tags.of(subnet).add("public-subnet", "true");
     }
 
     for (const subnet of vpc.privateSubnets) {
-      Tags.of(subnet).add(
-        "private-subnet",
-        "true",
-      );
+      Tags.of(subnet).add("private-subnet", "true");
     }
 
     // (Optional) Extra subnet setup
