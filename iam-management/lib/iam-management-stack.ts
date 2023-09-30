@@ -1,5 +1,5 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
+import { Stack, StackProps } from "aws-cdk-lib";
+import { Construct } from "constructs";
 import * as iam from "aws-cdk-lib/aws-iam";
 
 export class IamManagementStack extends Stack {
@@ -7,69 +7,79 @@ export class IamManagementStack extends Stack {
     super(scope, id, props);
 
     // Create IAM User
-    const sampleUser = new iam.User(this, 'SampleUser');
+    const demoUser = new iam.User(this, "DemoUser", {
+      userName: "cdk-demo-user",
+    });
 
     // Attach Managed Policy to IAM User
-    sampleUser.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonEC2ReadOnlyAccess"),
+    demoUser.addManagedPolicy(
+      iam.ManagedPolicy.fromAwsManagedPolicyName("IAMReadOnlyAccess")
     );
 
     // Attach Customized Policy to IAM User
-    const userDefinedInlinePolicy = new iam.Policy(this, 'ec2-managed-tags', {
-      statements: [
-        new iam.PolicyStatement({
-          resources: ['*'],
-          actions: [
-            'ec2:DeleteTags',
-            'ec2:CreateTags',
-          ],
-          effect: iam.Effect.ALLOW,
-        }),
-      ],
-    });
-    sampleUser.attachInlinePolicy(userDefinedInlinePolicy);
+    const userDefinedInlinePolicy = new iam.Policy(
+      this,
+      "iam-list-users-groups",
+      {
+        statements: [
+          new iam.PolicyStatement({
+            resources: ["*"],
+            actions: ["iam:ListUsers", "iam:ListGroups"],
+            effect: iam.Effect.ALLOW,
+          }),
+        ],
+      }
+    );
+    demoUser.attachInlinePolicy(userDefinedInlinePolicy);
 
     // Create IAM Group
-    const sampleGroup = new iam.Group(this, 'SampleGroup');
+    const demoGroup = new iam.Group(this, "DemoGroup", {
+      groupName: "cdk-demo-group",
+    });
 
     // Attach Managed Policy to IAM Group
-    sampleGroup.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName("CloudWatchReadOnlyAccess"),
+    demoGroup.addManagedPolicy(
+      iam.ManagedPolicy.fromAwsManagedPolicyName("IAMReadOnlyAccess")
     );
 
     // Attach Customized Policy to IAM User
-    const groupDefinedInlinePolicy = new iam.Policy(this, 'allow-list-all-buckets', {
-      statements: [
-        new iam.PolicyStatement({
-          resources: ['*'],
-          actions: [
-            's3:ListAllMyBuckets',
-          ],
-          effect: iam.Effect.ALLOW,
-        }),
-      ],
-    });
-    sampleGroup.attachInlinePolicy(groupDefinedInlinePolicy);
+    const groupDefinedInlinePolicy = new iam.Policy(
+      this,
+      "iam-list-user-groups",
+      {
+        statements: [
+          new iam.PolicyStatement({
+            resources: ["*"],
+            actions: ["iam:ListUsers", "iam:ListGroups"],
+            effect: iam.Effect.ALLOW,
+          }),
+        ],
+      }
+    );
+    demoGroup.attachInlinePolicy(groupDefinedInlinePolicy);
 
     // Add IAM User to IAM Group
-    sampleGroup.addUser(sampleUser);
+    demoGroup.addUser(demoUser);
 
     // Create IAM Role
-    const sampleRole = new iam.Role(this, 'SampleRole', {
-      assumedBy: new iam.ServicePrincipal('sns.amazonaws.com'),
+    const demoRole = new iam.Role(this, "DemoRole", {
+      roleName: "cdk-demo-role",
+      description: "CDK Demo Role",
+      assumedBy: new iam.ServicePrincipal("ec2.amazonaws.com"),
     });
 
     // Attach Managed Policy to IAM Role
-    sampleRole.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName("AWSLambda_ReadOnlyAccess"),
+    demoRole.addManagedPolicy(
+      iam.ManagedPolicy.fromAwsManagedPolicyName("IAMReadOnlyAccess")
     );
 
     // Attach Customized Policy to IAM Role
-    sampleRole.addToPolicy(new iam.PolicyStatement({
-      resources: ['*'],
-      actions: [
-        'lambda:InvokeFunction',
-      ],
-    }));
+    demoRole.addToPolicy(
+      new iam.PolicyStatement({
+        resources: ["*"],
+        actions: ["iam:ListUsers", "iam:ListGroups"],
+        effect: iam.Effect.ALLOW,
+      })
+    );
   }
 }
