@@ -19,13 +19,13 @@ export class VpcWithBastion extends Stack {
       {
         name: "private",
         cidrMask: 22,
-        subnetType: ec2.SubnetType.PRIVATE_WITH_NAT,
+        subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
       },
     ];
 
     // VPC
     const vpc = new ec2.Vpc(this, "Lab-VPC", {
-      cidr: vpcCidr,
+      ipAddresses: ec2.IpAddresses.cidr(vpcCidr),
       maxAzs: 2,
       subnetConfiguration: subnetConfig,
     });
