@@ -78,6 +78,8 @@ export class EksBasicStack extends cdk.Stack {
           vpcId: cluster.vpc.vpcId,
           region: cluster.vpc.env.region,
         },
+        timeout: cdk.Duration.minutes(5),
+        wait: true,
       }
     );
 
@@ -94,21 +96,54 @@ export class EksBasicStack extends cdk.Stack {
     const cfnAddonKubeProxy = new eks.CfnAddon(this, "cfnAddonKubeProxy", {
       addonName: "kube-proxy",
       clusterName: cluster.clusterName,
+
+      // addonVersion: "addonVersion",
+      // configurationValues: "configurationValues",
+      // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
+      // serviceAccountRoleArn: "serviceAccountRoleArn",
+      tags: [
+        {
+          key: "managed-by",
+          value: "cdk",
+        },
+      ],
     });
 
     // coredns
     const cfnAddonCoreDns = new eks.CfnAddon(this, "cfnAddonCoreDns", {
       addonName: "coredns",
       clusterName: cluster.clusterName,
+
+      // addonVersion: "addonVersion",
+      // configurationValues: "configurationValues",
+      // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
+      // serviceAccountRoleArn: "serviceAccountRoleArn",
+      tags: [
+        {
+          key: "managed-by",
+          value: "cdk",
+        },
+      ],
     });
 
     // vpc-cni
     const cfnAddonVpcCni = new eks.CfnAddon(this, "cfnAddonVpcCni", {
       addonName: "vpc-cni",
       clusterName: cluster.clusterName,
+
+      // addonVersion: "addonVersion",
+      // configurationValues: "configurationValues",
+      // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
+      // serviceAccountRoleArn: "serviceAccountRoleArn",
+      tags: [
+        {
+          key: "managed-by",
+          value: "cdk",
+        },
+      ],
     });
   }
 }
