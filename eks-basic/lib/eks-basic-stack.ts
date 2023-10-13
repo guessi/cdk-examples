@@ -146,5 +146,23 @@ export class EksBasicStack extends cdk.Stack {
         },
       ],
     });
+
+    // aws-ebs-csi-driver
+    const cfnAddonEbsCsi = new eks.CfnAddon(this, "cfnAddonEbsCsi", {
+      addonName: "aws-ebs-csi-driver",
+      clusterName: cluster.clusterName,
+
+      // addonVersion: "addonVersion",
+      // configurationValues: "configurationValues",
+      // preserveOnDelete: false,
+      resolveConflicts: "OVERWRITE",
+      // serviceAccountRoleArn: "serviceAccountRoleArn",
+      tags: [
+        {
+          key: "managed-by",
+          value: "cdk",
+        },
+      ],
+    });
   }
 }
