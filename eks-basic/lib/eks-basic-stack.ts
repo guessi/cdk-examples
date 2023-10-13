@@ -17,6 +17,7 @@ export class EksBasicStack extends cdk.Stack {
       endpointAccess: eks.EndpointAccess.PUBLIC_AND_PRIVATE,
       kubectlLayer: new KubectlV27Layer(this, "kubectl"),
       vpcSubnets: [{ subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS }],
+      ipFamily: eks.IpFamily.IP_V4,
       serviceIpv4Cidr: "172.20.0.0/16",
       defaultCapacity: 0,
       clusterLogging: [
