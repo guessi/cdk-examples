@@ -39,6 +39,25 @@ export class EksBasicStack extends cdk.Stack {
       new ec2.InstanceType("t3.medium"),
     ];
 
+    const customizedLaunchTemplate = new ec2.CfnLaunchTemplate(this, "LT", {
+      launchTemplateData: {
+        blockDeviceMappings: [
+          {
+            deviceName: "/dev/xvda",
+            ebs: {
+              volumeType: "gp3",
+              volumeSize: 20,
+            },
+          },
+        ],
+        metadataOptions: {
+          httpTokens: ec2.LaunchTemplateHttpTokens.REQUIRED,
+          httpPutResponseHopLimit: 2,
+        },
+      },
+    });
+
+    // default setup with volume type "gp2"
     cluster.addNodegroupCapacity("mng-1", {
       nodegroupName: "mng-1",
       amiType: eks.NodegroupAmiType.AL2_X86_64,
@@ -48,6 +67,24 @@ export class EksBasicStack extends cdk.Stack {
       maxSize: 5,
       diskSize: 20,
       capacityType: eks.CapacityType.SPOT,
+      tags: {
+        "managed-by": "cdk",
+      },
+    });
+
+    // customized setup with volume type "gp3"
+    cluster.addNodegroupCapacity("mng-2", {
+      nodegroupName: "mng-2",
+      amiType: eks.NodegroupAmiType.AL2_X86_64,
+      instanceTypes: instanceTypes,
+      desiredSize: 2,
+      minSize: 2,
+      maxSize: 5,
+      capacityType: eks.CapacityType.SPOT,
+      launchTemplateSpec: {
+        id: customizedLaunchTemplate.ref,
+        version: customizedLaunchTemplate.attrLatestVersionNumber,
+      },
       tags: {
         "managed-by": "cdk",
       },
