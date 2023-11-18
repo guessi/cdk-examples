@@ -63,7 +63,10 @@ export class EksBasicStack extends cdk.Stack {
     });
     cluster.awsAuth.addRoleMapping(consoleRole, { groups: ["system:masters"] });
 
+    // Addons from Helm Charts
+
     // AWS Load Balancer Controller
+    const awsLoadBalancerControllerChartVersion = "1.6.2";
     const awsLoadBalancerController = new eks.HelmChart(
       this,
       "aws-load-balancer-controller",
@@ -73,7 +76,7 @@ export class EksBasicStack extends cdk.Stack {
         repository: "https://aws.github.io/eks-charts",
         namespace: "kube-system",
         release: "aws-load-balancer-controller",
-        version: "1.6.2",
+        version: awsLoadBalancerControllerChartVersion,
         values: {
           clusterName: clusterName,
           vpcId: cluster.vpc.vpcId,
@@ -93,12 +96,23 @@ export class EksBasicStack extends cdk.Stack {
       release: "metrics-server",
     });
 
+    // Managed Addons
+
     // kube-proxy
+    const kubeProxyVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+      [eks.KubernetesVersion.V1_28, "v1.28.2-eksbuild.2"],
+      [eks.KubernetesVersion.V1_27, "v1.27.6-eksbuild.2"],
+      [eks.KubernetesVersion.V1_26, "v1.26.9-eksbuild.2"],
+      [eks.KubernetesVersion.V1_25, "v1.25.9-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.24.17-eksbuild.3"],
+      [eks.KubernetesVersion.V1_23, "v1.23.17-eksbuild.4"],
+    ]);
+
     const cfnAddonKubeProxy = new eks.CfnAddon(this, "cfnAddonKubeProxy", {
       addonName: "kube-proxy",
       clusterName: cluster.clusterName,
 
-      // addonVersion: "addonVersion",
+      addonVersion: kubeProxyVersionMap.get(eks.KubernetesVersion.V1_28),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
@@ -112,11 +126,20 @@ export class EksBasicStack extends cdk.Stack {
     });
 
     // coredns
+    const coreDnsVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+      [eks.KubernetesVersion.V1_28, "v1.10.1-eksbuild.5"],
+      [eks.KubernetesVersion.V1_27, "v1.10.1-eksbuild.5"],
+      [eks.KubernetesVersion.V1_26, "v1.9.3-eksbuild.9"],
+      [eks.KubernetesVersion.V1_25, "v1.9.3-eksbuild.9"],
+      [eks.KubernetesVersion.V1_24, "v1.9.3-eksbuild.9"],
+      [eks.KubernetesVersion.V1_23, "v1.8.7-eksbuild.8"],
+    ]);
+
     const cfnAddonCoreDns = new eks.CfnAddon(this, "cfnAddonCoreDns", {
       addonName: "coredns",
       clusterName: cluster.clusterName,
 
-      // addonVersion: "addonVersion",
+      addonVersion: coreDnsVersionMap.get(eks.KubernetesVersion.V1_28),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
@@ -130,11 +153,20 @@ export class EksBasicStack extends cdk.Stack {
     });
 
     // vpc-cni
+    const vpcCniVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+      [eks.KubernetesVersion.V1_28, "v1.15.3-eksbuild.1"],
+      [eks.KubernetesVersion.V1_27, "v1.15.3-eksbuild.1"],
+      [eks.KubernetesVersion.V1_26, "v1.15.3-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.15.3-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.15.3-eksbuild.1"],
+      [eks.KubernetesVersion.V1_23, "v1.15.3-eksbuild.1"],
+    ]);
+
     const cfnAddonVpcCni = new eks.CfnAddon(this, "cfnAddonVpcCni", {
       addonName: "vpc-cni",
       clusterName: cluster.clusterName,
 
-      // addonVersion: "addonVersion",
+      addonVersion: vpcCniVersionMap.get(eks.KubernetesVersion.V1_28),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
@@ -148,11 +180,20 @@ export class EksBasicStack extends cdk.Stack {
     });
 
     // aws-ebs-csi-driver
+    const ebsCsiVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+      [eks.KubernetesVersion.V1_28, "v1.25.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_27, "v1.25.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_26, "v1.25.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.25.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.25.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_23, "v1.25.0-eksbuild.1"],
+    ]);
+
     const cfnAddonEbsCsi = new eks.CfnAddon(this, "cfnAddonEbsCsi", {
       addonName: "aws-ebs-csi-driver",
       clusterName: cluster.clusterName,
 
-      // addonVersion: "addonVersion",
+      addonVersion: ebsCsiVersionMap.get(eks.KubernetesVersion.V1_28),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
