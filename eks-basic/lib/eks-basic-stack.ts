@@ -3,7 +3,7 @@ import { Construct } from "constructs";
 import * as ec2 from "aws-cdk-lib/aws-ec2";
 import * as eks from "aws-cdk-lib/aws-eks";
 import * as iam from "aws-cdk-lib/aws-iam";
-import { KubectlV27Layer } from "@aws-cdk/lambda-layer-kubectl-v27";
+import { KubectlV28Layer } from "@aws-cdk/lambda-layer-kubectl-v28";
 
 export class EksBasicStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -13,9 +13,9 @@ export class EksBasicStack extends cdk.Stack {
 
     const cluster = new eks.Cluster(this, "cdk-eks-cluster", {
       clusterName: clusterName,
-      version: eks.KubernetesVersion.V1_27,
+      version: eks.KubernetesVersion.V1_28,
       endpointAccess: eks.EndpointAccess.PUBLIC_AND_PRIVATE,
-      kubectlLayer: new KubectlV27Layer(this, "kubectl"),
+      kubectlLayer: new KubectlV28Layer(this, "kubectl"),
       vpcSubnets: [{ subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS }],
       ipFamily: eks.IpFamily.IP_V4,
       serviceIpv4Cidr: "172.20.0.0/16",
