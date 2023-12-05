@@ -164,12 +164,12 @@ export class EksBasicStack extends cdk.Stack {
 
     // coredns
     const coreDnsVersionMap: Map<eks.KubernetesVersion, string> = new Map([
-      [eks.KubernetesVersion.V1_28, "v1.10.1-eksbuild.5"],
-      [eks.KubernetesVersion.V1_27, "v1.10.1-eksbuild.5"],
-      [eks.KubernetesVersion.V1_26, "v1.9.3-eksbuild.9"],
-      [eks.KubernetesVersion.V1_25, "v1.9.3-eksbuild.9"],
-      [eks.KubernetesVersion.V1_24, "v1.9.3-eksbuild.9"],
-      [eks.KubernetesVersion.V1_23, "v1.8.7-eksbuild.8"],
+      [eks.KubernetesVersion.V1_28, "v1.10.1-eksbuild.6"],
+      [eks.KubernetesVersion.V1_27, "v1.10.1-eksbuild.6"],
+      [eks.KubernetesVersion.V1_26, "v1.9.3-eksbuild.10"],
+      [eks.KubernetesVersion.V1_25, "v1.9.3-eksbuild.10"],
+      [eks.KubernetesVersion.V1_24, "v1.9.3-eksbuild.10"],
+      [eks.KubernetesVersion.V1_23, "v1.8.7-eksbuild.9"],
     ]);
 
     const cfnAddonCoreDns = new eks.CfnAddon(this, "cfnAddonCoreDns", {
@@ -191,12 +191,12 @@ export class EksBasicStack extends cdk.Stack {
 
     // vpc-cni
     const vpcCniVersionMap: Map<eks.KubernetesVersion, string> = new Map([
-      [eks.KubernetesVersion.V1_28, "v1.15.3-eksbuild.1"],
-      [eks.KubernetesVersion.V1_27, "v1.15.3-eksbuild.1"],
-      [eks.KubernetesVersion.V1_26, "v1.15.3-eksbuild.1"],
-      [eks.KubernetesVersion.V1_25, "v1.15.3-eksbuild.1"],
-      [eks.KubernetesVersion.V1_24, "v1.15.3-eksbuild.1"],
-      [eks.KubernetesVersion.V1_23, "v1.15.3-eksbuild.1"],
+      [eks.KubernetesVersion.V1_28, "v1.15.4-eksbuild.1"],
+      [eks.KubernetesVersion.V1_27, "v1.15.4-eksbuild.1"],
+      [eks.KubernetesVersion.V1_26, "v1.15.4-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.15.4-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.15.4-eksbuild.1"],
+      [eks.KubernetesVersion.V1_23, "v1.15.4-eksbuild.1"],
     ]);
 
     const cfnAddonVpcCni = new eks.CfnAddon(this, "cfnAddonVpcCni", {
