@@ -218,6 +218,33 @@ export class EksBasicStack extends cdk.Stack {
       ],
     });
 
+    // eks-pod-identity-agent
+    const eksPodIdentityAgentVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+      [eks.KubernetesVersion.V1_28, "v1.0.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_27, "v1.0.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_26, "v1.0.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.0.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.0.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_23, "v1.0.0-eksbuild.1"],
+    ]);
+
+    const cfnAddonEksPodIdentityAgent = new eks.CfnAddon(this, "cfnAddonEksPodIdentityAgent", {
+      addonName: "eks-pod-identity-agent",
+      clusterName: cluster.clusterName,
+
+      addonVersion: eksPodIdentityAgentVersionMap.get(targetKubernetesVersion),
+      // configurationValues: "configurationValues",
+      // preserveOnDelete: false,
+      resolveConflicts: "OVERWRITE",
+      // serviceAccountRoleArn: "serviceAccountRoleArn",
+      tags: [
+        {
+          key: "managed-by",
+          value: "cdk",
+        },
+      ],
+    });
+
     // aws-ebs-csi-driver
     const ebsCsiVersionMap: Map<eks.KubernetesVersion, string> = new Map([
       [eks.KubernetesVersion.V1_28, "v1.25.0-eksbuild.1"],
