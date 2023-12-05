@@ -11,9 +11,11 @@ export class EksBasicStack extends cdk.Stack {
 
     const clusterName = "cdk-eks-cluster";
 
+    const targetKubernetesVersion = eks.KubernetesVersion.V1_28;
+
     const cluster = new eks.Cluster(this, "cdk-eks-cluster", {
       clusterName: clusterName,
-      version: eks.KubernetesVersion.V1_28,
+      version: targetKubernetesVersion,
       endpointAccess: eks.EndpointAccess.PUBLIC_AND_PRIVATE,
       kubectlLayer: new KubectlV28Layer(this, "kubectl"),
       vpcSubnets: [{ subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS }],
@@ -149,7 +151,7 @@ export class EksBasicStack extends cdk.Stack {
       addonName: "kube-proxy",
       clusterName: cluster.clusterName,
 
-      addonVersion: kubeProxyVersionMap.get(eks.KubernetesVersion.V1_28),
+      addonVersion: kubeProxyVersionMap.get(targetKubernetesVersion),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
@@ -176,7 +178,7 @@ export class EksBasicStack extends cdk.Stack {
       addonName: "coredns",
       clusterName: cluster.clusterName,
 
-      addonVersion: coreDnsVersionMap.get(eks.KubernetesVersion.V1_28),
+      addonVersion: coreDnsVersionMap.get(targetKubernetesVersion),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
@@ -203,7 +205,7 @@ export class EksBasicStack extends cdk.Stack {
       addonName: "vpc-cni",
       clusterName: cluster.clusterName,
 
-      addonVersion: vpcCniVersionMap.get(eks.KubernetesVersion.V1_28),
+      addonVersion: vpcCniVersionMap.get(targetKubernetesVersion),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
@@ -230,7 +232,7 @@ export class EksBasicStack extends cdk.Stack {
       addonName: "aws-ebs-csi-driver",
       clusterName: cluster.clusterName,
 
-      addonVersion: ebsCsiVersionMap.get(eks.KubernetesVersion.V1_28),
+      addonVersion: ebsCsiVersionMap.get(targetKubernetesVersion),
       // configurationValues: "configurationValues",
       // preserveOnDelete: false,
       resolveConflicts: "OVERWRITE",
