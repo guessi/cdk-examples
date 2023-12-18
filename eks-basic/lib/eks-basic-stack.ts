@@ -139,12 +139,12 @@ export class EksBasicStack extends cdk.Stack {
 
     // kube-proxy
     const kubeProxyVersionMap: Map<eks.KubernetesVersion, string> = new Map([
-      [eks.KubernetesVersion.V1_28, "v1.28.2-eksbuild.2"],
+      [eks.KubernetesVersion.V1_28, "v1.28.4-eksbuild.1"],
       [eks.KubernetesVersion.V1_27, "v1.27.6-eksbuild.2"],
-      [eks.KubernetesVersion.V1_26, "v1.26.9-eksbuild.2"],
-      [eks.KubernetesVersion.V1_25, "v1.25.9-eksbuild.1"],
-      [eks.KubernetesVersion.V1_24, "v1.24.17-eksbuild.3"],
-      [eks.KubernetesVersion.V1_23, "v1.23.17-eksbuild.4"],
+      [eks.KubernetesVersion.V1_26, "v1.26.11-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.25.16-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.24.17-eksbuild.4"],
+      [eks.KubernetesVersion.V1_23, "v1.23.17-eksbuild.5"],
     ]);
 
     const cfnAddonKubeProxy = new eks.CfnAddon(this, "cfnAddonKubeProxy", {
