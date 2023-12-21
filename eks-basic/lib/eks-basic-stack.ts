@@ -247,12 +247,12 @@ export class EksBasicStack extends cdk.Stack {
 
     // aws-ebs-csi-driver
     const ebsCsiVersionMap: Map<eks.KubernetesVersion, string> = new Map([
-      [eks.KubernetesVersion.V1_28, "v1.25.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_27, "v1.25.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_26, "v1.25.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_25, "v1.25.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_24, "v1.25.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_23, "v1.25.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_28, "v1.26.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_27, "v1.26.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_26, "v1.26.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.26.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.26.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_23, "v1.26.0-eksbuild.1"],
     ]);
 
     const cfnAddonEbsCsi = new eks.CfnAddon(this, "cfnAddonEbsCsi", {
