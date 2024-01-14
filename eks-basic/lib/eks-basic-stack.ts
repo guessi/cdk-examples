@@ -222,11 +222,11 @@ export class EksBasicStack extends cdk.Stack {
     // - https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html#pod-id-considerations
     // - https://aws.amazon.com/blogs/aws/amazon-eks-pod-identity-simplifies-iam-permissions-for-applications-on-amazon-eks-clusters/
     const eksPodIdentityAgentVersionMap: Map<eks.KubernetesVersion, string> = new Map([
-      [eks.KubernetesVersion.V1_28, "v1.0.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_27, "v1.0.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_26, "v1.0.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_25, "v1.0.0-eksbuild.1"],
-      [eks.KubernetesVersion.V1_24, "v1.0.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_28, "v1.1.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_27, "v1.1.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_26, "v1.1.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.1.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.1.0-eksbuild.1"],
       // Only Amazon EKS 1.24+ are supported.
     ]);
 
