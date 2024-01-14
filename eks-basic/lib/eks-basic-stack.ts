@@ -193,11 +193,11 @@ export class EksBasicStack extends cdk.Stack {
 
     // vpc-cni
     const vpcCniVersionMap: Map<eks.KubernetesVersion, string> = new Map([
-      [eks.KubernetesVersion.V1_28, "v1.15.5-eksbuild.1"],
-      [eks.KubernetesVersion.V1_27, "v1.15.5-eksbuild.1"],
-      [eks.KubernetesVersion.V1_26, "v1.15.5-eksbuild.1"],
-      [eks.KubernetesVersion.V1_25, "v1.15.5-eksbuild.1"],
-      [eks.KubernetesVersion.V1_24, "v1.15.5-eksbuild.1"],
+      [eks.KubernetesVersion.V1_28, "v1.16.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_27, "v1.16.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_26, "v1.16.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_25, "v1.16.0-eksbuild.1"],
+      [eks.KubernetesVersion.V1_24, "v1.16.0-eksbuild.1"],
       [eks.KubernetesVersion.V1_23, "v1.15.5-eksbuild.1"],
     ]);
 
