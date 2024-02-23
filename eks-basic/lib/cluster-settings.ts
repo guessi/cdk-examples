@@ -2,7 +2,7 @@ import * as ec2 from "aws-cdk-lib/aws-ec2";
 import * as eks from "aws-cdk-lib/aws-eks";
 
 export const clusterName = "cdk-eks-cluster";
-export const eksVersion = eks.KubernetesVersion.V1_28;
+export const eksVersion = eks.KubernetesVersion.V1_29;
 export const endpointAccess = eks.EndpointAccess.PUBLIC_AND_PRIVATE;
 export const subnetType = ec2.SubnetType.PRIVATE_WITH_EGRESS;
 export const ipFamily = eks.IpFamily.IP_V4;

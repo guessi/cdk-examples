@@ -2,6 +2,7 @@ import * as eks from "aws-cdk-lib/aws-eks";
 
 // kube-proxy
 export const kubeProxyVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+  [eks.KubernetesVersion.V1_29, "v1.29.0-eksbuild.3"],
   [eks.KubernetesVersion.V1_28, "v1.28.4-eksbuild.4"],
   [eks.KubernetesVersion.V1_27, "v1.27.8-eksbuild.4"],
   [eks.KubernetesVersion.V1_26, "v1.26.11-eksbuild.4"],
@@ -11,6 +12,7 @@ export const kubeProxyVersionMap: Map<eks.KubernetesVersion, string> = new Map([
 
 // coredns
 export const coreDnsVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+  [eks.KubernetesVersion.V1_29, "v1.11.1-eksbuild.6"],
   [eks.KubernetesVersion.V1_28, "v1.10.1-eksbuild.7"],
   [eks.KubernetesVersion.V1_27, "v1.10.1-eksbuild.7"],
   [eks.KubernetesVersion.V1_26, "v1.9.3-eksbuild.11"],
@@ -20,6 +22,7 @@ export const coreDnsVersionMap: Map<eks.KubernetesVersion, string> = new Map([
 
 // vpc-cni
 export const vpcCniVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+  [eks.KubernetesVersion.V1_29, "v1.16.2-eksbuild.1"],
   [eks.KubernetesVersion.V1_28, "v1.16.2-eksbuild.1"],
   [eks.KubernetesVersion.V1_27, "v1.16.2-eksbuild.1"],
   [eks.KubernetesVersion.V1_26, "v1.16.2-eksbuild.1"],
@@ -30,6 +33,7 @@ export const vpcCniVersionMap: Map<eks.KubernetesVersion, string> = new Map([
 // eks-pod-identity-agent
 export const eksPodIdentityAgentVersionMap: Map<eks.KubernetesVersion, string> =
   new Map([
+    [eks.KubernetesVersion.V1_29, "v1.1.0-eksbuild.1"],
     [eks.KubernetesVersion.V1_28, "v1.1.0-eksbuild.1"],
     [eks.KubernetesVersion.V1_27, "v1.1.0-eksbuild.1"],
     [eks.KubernetesVersion.V1_26, "v1.1.0-eksbuild.1"],
@@ -39,6 +43,7 @@ export const eksPodIdentityAgentVersionMap: Map<eks.KubernetesVersion, string> =
 
 // aws-ebs-csi-driver
 export const ebsCsiVersionMap: Map<eks.KubernetesVersion, string> = new Map([
+  [eks.KubernetesVersion.V1_29, "v1.27.0-eksbuild.1"],
   [eks.KubernetesVersion.V1_28, "v1.27.0-eksbuild.1"],
   [eks.KubernetesVersion.V1_27, "v1.27.0-eksbuild.1"],
   [eks.KubernetesVersion.V1_26, "v1.27.0-eksbuild.1"],
