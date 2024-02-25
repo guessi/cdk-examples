@@ -89,7 +89,7 @@ export class EksCluster extends cdk.Stack {
 
   private createHelmCharts(cluster: eks.Cluster) {
     // AWS Load Balancer Controller
-    const awsLoadBalancerControllerChartVersion = "1.6.2";
+    const awsLoadBalancerControllerChartVersion = "1.7.1";
     new eks.HelmChart(this, "aws-load-balancer-controller", {
       cluster: cluster,
       chart: "aws-load-balancer-controller",
