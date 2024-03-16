@@ -27,7 +27,7 @@ export class EksCluster extends cdk.Stack {
     });
 
     // Create Managed Node Group with Launch Template
-    this.createManagedNodeGroupWithLaunchTemplate(cluster, "mng-1");
+    this.createManagedNodeGroups(cluster, "cdk-managed");
 
     // Addons from Helm Charts
     this.createHelmCharts(cluster);
@@ -39,10 +39,10 @@ export class EksCluster extends cdk.Stack {
     this.setupAwsAuth(cluster);
   }
 
-  // Managed Node Group with Launch Template
-  private createManagedNodeGroupWithLaunchTemplate(
+  // Managed Node Groups
+  private createManagedNodeGroups(
     cluster: eks.Cluster,
-    nodeGroupName: string
+    nodeGroupNamePrefix: string
   ) {
     const customizedLaunchTemplate = new ec2.CfnLaunchTemplate(
       this,
@@ -66,21 +66,45 @@ export class EksCluster extends cdk.Stack {
       }
     );
 
-    cluster.addNodegroupCapacity(nodeGroupName, {
-      nodegroupName: nodeGroupName,
+    cluster.addNodegroupCapacity(nodeGroupNamePrefix + "-al2-amd64-1", {
       amiType: eks.NodegroupAmiType.AL2_X86_64,
-      instanceTypes: [
-        new ec2.InstanceType("t3a.medium"),
-        new ec2.InstanceType("t3.medium"),
-      ],
-      desiredSize: 2,
-      minSize: 2,
+      instanceTypes: [new ec2.InstanceType("t3.medium")],
+      desiredSize: 1,
+      minSize: 1,
       maxSize: 5,
       capacityType: eks.CapacityType.SPOT,
       launchTemplateSpec: {
         id: customizedLaunchTemplate.ref,
         version: customizedLaunchTemplate.attrLatestVersionNumber,
       },
+      tags: {
+        "managed-by": "cdk",
+      },
+    });
+
+    cluster.addNodegroupCapacity(nodeGroupNamePrefix + "-al2023-amd64-1", {
+      amiType: eks.NodegroupAmiType.AL2023_X86_64_STANDARD,
+      // FIXME: there's a known issue that PR#29335 not fully support AL2023
+      // - https://github.com/aws/aws-cdk/pull/29335
+      // instanceTypes: [new ec2.InstanceType("t3.medium")],
+      desiredSize: 1,
+      minSize: 1,
+      maxSize: 5,
+      capacityType: eks.CapacityType.SPOT,
+      tags: {
+        "managed-by": "cdk",
+      },
+    });
+
+    cluster.addNodegroupCapacity(nodeGroupNamePrefix + "-al2023-arm64-1", {
+      amiType: eks.NodegroupAmiType.AL2023_ARM_64_STANDARD,
+      // FIXME: there's a known issue that PR#29335 not fully support AL2023
+      // - https://github.com/aws/aws-cdk/pull/29335
+      // instanceTypes: [new ec2.InstanceType("t3.medium")],
+      desiredSize: 1,
+      minSize: 1,
+      maxSize: 5,
+      capacityType: eks.CapacityType.SPOT,
       tags: {
         "managed-by": "cdk",
       },
