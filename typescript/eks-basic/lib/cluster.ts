@@ -99,9 +99,10 @@ export class EksCluster extends cdk.Stack {
 
     cluster.addNodegroupCapacity(nodeGroupNamePrefix + "-al2023-arm64-1", {
       amiType: eks.NodegroupAmiType.AL2023_ARM_64_STANDARD,
-      // FIXME: there's a known issue that PR#29335 not fully support AL2023
-      // - https://github.com/aws/aws-cdk/pull/29335
-      // instanceTypes: [new ec2.InstanceType("t3.medium")],
+      // HINT: required cdk v2.135.0 or higher version to support instanceTypes assignment when working with AL2023
+      // - https://github.com/aws/aws-cdk/pull/29505
+      // - https://github.com/aws/aws-cdk/releases/tag/v2.135.0
+      instanceTypes: [new ec2.InstanceType("t4g.medium")],
       desiredSize: 1,
       minSize: 1,
       maxSize: 5,
