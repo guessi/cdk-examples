@@ -198,6 +198,16 @@ export class EksCluster extends cdk.Stack {
       resolveConflicts: "OVERWRITE",
       tags: generalTags,
     });
+
+    // amazon-cloudwatch-observability
+    new eks.CfnAddon(this, "cfnAddonAmazonCloudwatchObservability", {
+      addonName: "amazon-cloudwatch-observability",
+      clusterName: cluster.clusterName,
+      addonVersion:
+        addons.amazonCloudwatchObservabilityVersionMap.get(eksVersion),
+      resolveConflicts: "OVERWRITE",
+      tags: generalTags,
+    });
   }
 
   private setupAwsAuth(cluster: eks.Cluster) {
