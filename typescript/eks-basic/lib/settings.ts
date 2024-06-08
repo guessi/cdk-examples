@@ -7,7 +7,7 @@ import {
 } from "aws-cdk-lib/aws-eks";
 
 export const clusterName = "cdk-eks-cluster";
-export const targetEksVersion = KubernetesVersion.V1_29;
+export const targetEksVersion = KubernetesVersion.V1_30;
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;
 export const ipFamily = IpFamily.IP_V4;
@@ -28,6 +28,7 @@ export const chartVersionAwsLBC = "1.8.1";
 // Managed Addons version definitions
 
 export const versionsKubeProxy: Map<KubernetesVersion, string> = new Map([
+  [KubernetesVersion.V1_30, "v1.30.0-eksbuild.3"],
   [KubernetesVersion.V1_29, "v1.29.3-eksbuild.5"],
   [KubernetesVersion.V1_28, "v1.28.8-eksbuild.5"],
   [KubernetesVersion.V1_27, "v1.27.12-eksbuild.5"],
@@ -37,6 +38,7 @@ export const versionsKubeProxy: Map<KubernetesVersion, string> = new Map([
 ]);
 
 export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
+  [KubernetesVersion.V1_30, "v1.11.1-eksbuild.9"],
   [KubernetesVersion.V1_29, "v1.11.1-eksbuild.9"],
   [KubernetesVersion.V1_28, "v1.10.1-eksbuild.11"],
   [KubernetesVersion.V1_27, "v1.10.1-eksbuild.11"],
@@ -46,6 +48,7 @@ export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
 ]);
 
 export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
+  [KubernetesVersion.V1_30, "v1.18.2-eksbuild.1"],
   [KubernetesVersion.V1_29, "v1.18.2-eksbuild.1"],
   [KubernetesVersion.V1_28, "v1.18.2-eksbuild.1"],
   [KubernetesVersion.V1_27, "v1.18.2-eksbuild.1"],
@@ -56,6 +59,7 @@ export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
 
 export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   [
+    [KubernetesVersion.V1_30, "v1.2.0-eksbuild.1"],
     [KubernetesVersion.V1_29, "v1.2.0-eksbuild.1"],
     [KubernetesVersion.V1_28, "v1.2.0-eksbuild.1"],
     [KubernetesVersion.V1_27, "v1.2.0-eksbuild.1"],
@@ -66,6 +70,7 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
 );
 
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
+  [KubernetesVersion.V1_30, "v1.31.0-eksbuild.1"],
   [KubernetesVersion.V1_29, "v1.31.0-eksbuild.1"],
   [KubernetesVersion.V1_28, "v1.31.0-eksbuild.1"],
   [KubernetesVersion.V1_27, "v1.31.0-eksbuild.1"],
@@ -75,6 +80,7 @@ export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
 ]);
 
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
+  [KubernetesVersion.V1_30, "v1.7.0-eksbuild.1"],
   [KubernetesVersion.V1_29, "v1.7.0-eksbuild.1"],
   [KubernetesVersion.V1_28, "v1.7.0-eksbuild.1"],
   [KubernetesVersion.V1_27, "v1.7.0-eksbuild.1"],
@@ -96,7 +102,7 @@ export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
 
   ADDON_NAME=kube-proxy
 
-  SUPPORTED_K8S_VERSION=("1.29" "1.28" "1.27" "1.26" "1.25" "1.24")
+  SUPPORTED_K8S_VERSION=("1.30" "1.29" "1.28" "1.27" "1.26" "1.25" "1.24")
 
   for K8S_VERSION in ${SUPPORTED_K8S_VERSION[@]}; do \
     aws eks describe-addon-versions \

@@ -2,7 +2,7 @@ import { Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { Cluster } from "aws-cdk-lib/aws-eks";
 import { User, Role } from "aws-cdk-lib/aws-iam";
-import { KubectlV29Layer as kubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v29";
+import { KubectlV30Layer as kubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v30";
 import { NodeGroups } from "./node-groups";
 import { Charts } from "./charts";
 import { ManagedAddons } from "./managed-addons";
