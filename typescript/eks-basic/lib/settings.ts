@@ -28,11 +28,11 @@ export const chartVersionAwsLBC = "1.8.1";
 // Managed Addons version definitions
 
 export const versionsKubeProxy: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_29, "v1.29.3-eksbuild.2"],
-  [KubernetesVersion.V1_28, "v1.28.8-eksbuild.2"],
-  [KubernetesVersion.V1_27, "v1.27.12-eksbuild.2"],
-  [KubernetesVersion.V1_26, "v1.26.15-eksbuild.2"],
-  [KubernetesVersion.V1_25, "v1.25.16-eksbuild.5"],
+  [KubernetesVersion.V1_29, "v1.29.3-eksbuild.5"],
+  [KubernetesVersion.V1_28, "v1.28.8-eksbuild.5"],
+  [KubernetesVersion.V1_27, "v1.27.12-eksbuild.5"],
+  [KubernetesVersion.V1_26, "v1.26.15-eksbuild.5"],
+  [KubernetesVersion.V1_25, "v1.25.16-eksbuild.8"],
   [KubernetesVersion.V1_24, "v1.24.17-eksbuild.8"],
 ]);
 
@@ -66,21 +66,21 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
 );
 
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_29, "v1.30.0-eksbuild.1"],
-  [KubernetesVersion.V1_28, "v1.30.0-eksbuild.1"],
-  [KubernetesVersion.V1_27, "v1.30.0-eksbuild.1"],
-  [KubernetesVersion.V1_26, "v1.30.0-eksbuild.1"],
-  [KubernetesVersion.V1_25, "v1.30.0-eksbuild.1"],
-  [KubernetesVersion.V1_24, "v1.30.0-eksbuild.1"],
+  [KubernetesVersion.V1_29, "v1.31.0-eksbuild.1"],
+  [KubernetesVersion.V1_28, "v1.31.0-eksbuild.1"],
+  [KubernetesVersion.V1_27, "v1.31.0-eksbuild.1"],
+  [KubernetesVersion.V1_26, "v1.31.0-eksbuild.1"],
+  [KubernetesVersion.V1_25, "v1.31.0-eksbuild.1"],
+  [KubernetesVersion.V1_24, "v1.31.0-eksbuild.1"],
 ]);
 
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_29, "v1.6.0-eksbuild.1"],
-  [KubernetesVersion.V1_28, "v1.6.0-eksbuild.1"],
-  [KubernetesVersion.V1_27, "v1.6.0-eksbuild.1"],
-  [KubernetesVersion.V1_26, "v1.6.0-eksbuild.1"],
-  [KubernetesVersion.V1_25, "v1.6.0-eksbuild.1"],
-  [KubernetesVersion.V1_24, "v1.6.0-eksbuild.1"],
+  [KubernetesVersion.V1_29, "v1.7.0-eksbuild.1"],
+  [KubernetesVersion.V1_28, "v1.7.0-eksbuild.1"],
+  [KubernetesVersion.V1_27, "v1.7.0-eksbuild.1"],
+  [KubernetesVersion.V1_26, "v1.7.0-eksbuild.1"],
+  [KubernetesVersion.V1_25, "v1.7.0-eksbuild.1"],
+  [KubernetesVersion.V1_24, "v1.7.0-eksbuild.1"],
 ]);
 
 /*
