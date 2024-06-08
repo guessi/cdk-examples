@@ -46,12 +46,12 @@ export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
 ]);
 
 export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_29, "v1.18.1-eksbuild.3"],
-  [KubernetesVersion.V1_28, "v1.18.1-eksbuild.3"],
-  [KubernetesVersion.V1_27, "v1.18.1-eksbuild.3"],
-  [KubernetesVersion.V1_26, "v1.18.1-eksbuild.3"],
-  [KubernetesVersion.V1_25, "v1.18.1-eksbuild.3"],
-  [KubernetesVersion.V1_24, "v1.18.1-eksbuild.3"],
+  [KubernetesVersion.V1_29, "v1.18.2-eksbuild.1"],
+  [KubernetesVersion.V1_28, "v1.18.2-eksbuild.1"],
+  [KubernetesVersion.V1_27, "v1.18.2-eksbuild.1"],
+  [KubernetesVersion.V1_26, "v1.18.2-eksbuild.1"],
+  [KubernetesVersion.V1_25, "v1.18.2-eksbuild.1"],
+  [KubernetesVersion.V1_24, "v1.18.2-eksbuild.1"],
 ]);
 
 export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
