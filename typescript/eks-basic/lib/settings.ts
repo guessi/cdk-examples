@@ -47,46 +47,50 @@ export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_24, "v1.9.3-eksbuild.15"],
 ]);
 
+const versionsVpcCniDefault = "v1.18.2-eksbuild.1";
 export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_30, "v1.18.2-eksbuild.1"],
-  [KubernetesVersion.V1_29, "v1.18.2-eksbuild.1"],
-  [KubernetesVersion.V1_28, "v1.18.2-eksbuild.1"],
-  [KubernetesVersion.V1_27, "v1.18.2-eksbuild.1"],
-  [KubernetesVersion.V1_26, "v1.18.2-eksbuild.1"],
-  [KubernetesVersion.V1_25, "v1.18.2-eksbuild.1"],
-  [KubernetesVersion.V1_24, "v1.18.2-eksbuild.1"],
+  [KubernetesVersion.V1_30, versionsVpcCniDefault],
+  [KubernetesVersion.V1_29, versionsVpcCniDefault],
+  [KubernetesVersion.V1_28, versionsVpcCniDefault],
+  [KubernetesVersion.V1_27, versionsVpcCniDefault],
+  [KubernetesVersion.V1_26, versionsVpcCniDefault],
+  [KubernetesVersion.V1_25, versionsVpcCniDefault],
+  [KubernetesVersion.V1_24, versionsVpcCniDefault],
 ]);
 
+const versionsPodIdentityAgentDefault = "v1.2.0-eksbuild.1";
 export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   [
-    [KubernetesVersion.V1_30, "v1.2.0-eksbuild.1"],
-    [KubernetesVersion.V1_29, "v1.2.0-eksbuild.1"],
-    [KubernetesVersion.V1_28, "v1.2.0-eksbuild.1"],
-    [KubernetesVersion.V1_27, "v1.2.0-eksbuild.1"],
-    [KubernetesVersion.V1_26, "v1.2.0-eksbuild.1"],
-    [KubernetesVersion.V1_25, "v1.2.0-eksbuild.1"],
-    [KubernetesVersion.V1_24, "v1.2.0-eksbuild.1"],
+    [KubernetesVersion.V1_30, versionsPodIdentityAgentDefault],
+    [KubernetesVersion.V1_29, versionsPodIdentityAgentDefault],
+    [KubernetesVersion.V1_28, versionsPodIdentityAgentDefault],
+    [KubernetesVersion.V1_27, versionsPodIdentityAgentDefault],
+    [KubernetesVersion.V1_26, versionsPodIdentityAgentDefault],
+    [KubernetesVersion.V1_25, versionsPodIdentityAgentDefault],
+    [KubernetesVersion.V1_24, versionsPodIdentityAgentDefault],
   ]
 );
 
+const versionsEbsCsiDriverDefault = "v1.31.0-eksbuild.1";
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_30, "v1.31.0-eksbuild.1"],
-  [KubernetesVersion.V1_29, "v1.31.0-eksbuild.1"],
-  [KubernetesVersion.V1_28, "v1.31.0-eksbuild.1"],
-  [KubernetesVersion.V1_27, "v1.31.0-eksbuild.1"],
-  [KubernetesVersion.V1_26, "v1.31.0-eksbuild.1"],
-  [KubernetesVersion.V1_25, "v1.31.0-eksbuild.1"],
-  [KubernetesVersion.V1_24, "v1.31.0-eksbuild.1"],
+  [KubernetesVersion.V1_30, versionsEbsCsiDriverDefault],
+  [KubernetesVersion.V1_29, versionsEbsCsiDriverDefault],
+  [KubernetesVersion.V1_28, versionsEbsCsiDriverDefault],
+  [KubernetesVersion.V1_27, versionsEbsCsiDriverDefault],
+  [KubernetesVersion.V1_26, versionsEbsCsiDriverDefault],
+  [KubernetesVersion.V1_25, versionsEbsCsiDriverDefault],
+  [KubernetesVersion.V1_24, versionsEbsCsiDriverDefault],
 ]);
 
+const versionsCwObservabilityDefault = "v1.7.0-eksbuild.1";
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_30, "v1.7.0-eksbuild.1"],
-  [KubernetesVersion.V1_29, "v1.7.0-eksbuild.1"],
-  [KubernetesVersion.V1_28, "v1.7.0-eksbuild.1"],
-  [KubernetesVersion.V1_27, "v1.7.0-eksbuild.1"],
-  [KubernetesVersion.V1_26, "v1.7.0-eksbuild.1"],
-  [KubernetesVersion.V1_25, "v1.7.0-eksbuild.1"],
-  [KubernetesVersion.V1_24, "v1.7.0-eksbuild.1"],
+  [KubernetesVersion.V1_30, versionsCwObservabilityDefault],
+  [KubernetesVersion.V1_29, versionsCwObservabilityDefault],
+  [KubernetesVersion.V1_28, versionsCwObservabilityDefault],
+  [KubernetesVersion.V1_27, versionsCwObservabilityDefault],
+  [KubernetesVersion.V1_26, versionsCwObservabilityDefault],
+  [KubernetesVersion.V1_25, versionsCwObservabilityDefault],
+  [KubernetesVersion.V1_24, versionsCwObservabilityDefault],
 ]);
 
 /*
