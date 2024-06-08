@@ -23,7 +23,7 @@ export const clusterLogging = [
 
 // Chart version definitions
 
-export const chartVersionAwsLBC = "1.8.0";
+export const chartVersionAwsLBC = "1.8.1";
 
 // Managed Addons version definitions
 
