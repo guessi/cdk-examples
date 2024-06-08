@@ -34,13 +34,15 @@ export class EksCluster extends Stack {
 
   private setupAwsAuth(cluster: Cluster) {
     // mapUsers
-    const adminUser = User.fromUserName(this, "adminUser", "admin-cli");
-    cluster.awsAuth.addUserMapping(adminUser, { groups: ["system:masters"] });
+    cluster.awsAuth.addUserMapping(
+      User.fromUserName(this, "admin-user", "admin-cli"),
+      { groups: ["system:masters"] }
+    );
 
     // mapRoles
-    const consoleRole = Role.fromRoleName(this, "Role", "Admin", {
-      mutable: true,
-    });
-    cluster.awsAuth.addRoleMapping(consoleRole, { groups: ["system:masters"] });
+    cluster.awsAuth.addRoleMapping(
+      Role.fromRoleName(this, "admin-role", "Admin", { mutable: true }),
+      { groups: ["system:masters"] }
+    );
   }
 }
