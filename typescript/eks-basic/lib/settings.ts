@@ -58,7 +58,7 @@ export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_24, versionsVpcCniDefault],
 ]);
 
-const versionsPodIdentityAgentDefault = "v1.2.0-eksbuild.1";
+const versionsPodIdentityAgentDefault = "v1.3.0-eksbuild.1";
 export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   [
     [KubernetesVersion.V1_30, versionsPodIdentityAgentDefault],
@@ -71,7 +71,7 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   ]
 );
 
-const versionsEbsCsiDriverDefault = "v1.31.0-eksbuild.1";
+const versionsEbsCsiDriverDefault = "v1.32.0-eksbuild.1";
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_30, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_29, versionsEbsCsiDriverDefault],
