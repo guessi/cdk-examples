@@ -7,7 +7,7 @@ import {
 } from "aws-cdk-lib/aws-eks";
 
 export const clusterName = "cdk-eks-cluster";
-export const targetEksVersion = KubernetesVersion.V1_30;
+export const targetEksVersion = KubernetesVersion.V1_31;
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;
 export const ipFamily = IpFamily.IP_V4;
