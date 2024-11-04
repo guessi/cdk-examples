@@ -1,6 +1,11 @@
 import { Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { Cluster } from "aws-cdk-lib/aws-eks";
+import {
+  AccessPolicy,
+  AccessScopeType,
+  AuthenticationMode,
+  Cluster,
+} from "aws-cdk-lib/aws-eks";
 import { User, Role } from "aws-cdk-lib/aws-iam";
 import { KubectlV31Layer as kubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v31";
 import { NodeGroups } from "./node-groups";
@@ -17,6 +22,7 @@ export class EksCluster extends Stack {
       version: settings.targetEksVersion,
       endpointAccess: settings.endpointAccess,
       kubectlLayer: new kubectlLayer(this, "kubectl"),
+      authenticationMode: AuthenticationMode.API_AND_CONFIG_MAP,
       vpcSubnets: [{ subnetType: settings.subnetType }],
       ipFamily: settings.ipFamily,
       serviceIpv4Cidr: settings.serviceIpv4Cidr,
@@ -30,19 +36,44 @@ export class EksCluster extends Stack {
 
     // Setup ConfigMaps/aws-auth
     this.setupAwsAuth(cluster);
+
+    // Setup Access Entries
+    this.setupAccessEntries(cluster);
   }
 
   private setupAwsAuth(cluster: Cluster) {
     // mapUsers
     cluster.awsAuth.addUserMapping(
-      User.fromUserName(this, "admin-user", "admin-cli"),
+      User.fromUserName(this, "admin-user-aws-atuh", "admin-cli"),
       { groups: ["system:masters"] }
     );
 
     // mapRoles
     cluster.awsAuth.addRoleMapping(
-      Role.fromRoleName(this, "admin-role", "Admin", { mutable: true }),
+      Role.fromRoleName(this, "admin-role-aws-auth", "Admin", { mutable: true }),
       { groups: ["system:masters"] }
+    );
+  }
+
+  private setupAccessEntries(cluster: Cluster) {
+    cluster.grantAccess(
+      "clusterAdminAccessUser",
+      User.fromUserName(this, "admin-user-access", "admin-cli").userArn,
+      [
+        AccessPolicy.fromAccessPolicyName("AmazonEKSClusterAdminPolicy", {
+          accessScopeType: AccessScopeType.CLUSTER,
+        }),
+      ]
+    );
+
+    cluster.grantAccess(
+      "clusterAdminAccessRole",
+      Role.fromRoleName(this, "admin-role-access", "Admin", { mutable: true }).roleArn,
+      [
+        AccessPolicy.fromAccessPolicyName("AmazonEKSClusterAdminPolicy", {
+          accessScopeType: AccessScopeType.CLUSTER,
+        }),
+      ]
     );
   }
 }
