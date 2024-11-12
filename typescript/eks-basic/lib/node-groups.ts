@@ -22,7 +22,7 @@ export class NodeGroups extends Construct {
               deviceName: "/dev/xvda",
               ebs: {
                 volumeType: "gp3",
-                volumeSize: 20,
+                volumeSize: 30,
               },
             },
           ],
@@ -39,9 +39,12 @@ export class NodeGroups extends Construct {
     // - https://github.com/aws/aws-cdk/releases/tag/v2.135.0
     cluster.addNodegroupCapacity(nodeGroupNamePrefix + "-al2023", {
       amiType: NodegroupAmiType.AL2023_X86_64_STANDARD,
-      instanceTypes: [new InstanceType("t3.medium")],
-      desiredSize: 1,
-      minSize: 1,
+      instanceTypes: [
+        new InstanceType("t3a.medium"),
+        new InstanceType("t3.medium"),
+      ],
+      desiredSize: 2,
+      minSize: 2,
       maxSize: 5,
       capacityType: CapacityType.SPOT,
       launchTemplateSpec: {

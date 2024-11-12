@@ -48,7 +48,8 @@ class EksBasicStack(Stack):
         cluster.add_nodegroup_capacity(
             "mng-al2023",
             instance_types=[
-                ec2.InstanceType("m5.large")
+                ec2.InstanceType("m5.large"),
+                ec2.InstanceType("m5a.large")
             ],
             ami_type=eks.NodegroupAmiType.AL2023_X86_64_STANDARD,
             min_size=2,
