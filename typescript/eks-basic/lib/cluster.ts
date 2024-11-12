@@ -50,7 +50,7 @@ export class EksCluster extends Stack {
 
     // mapRoles
     cluster.awsAuth.addRoleMapping(
-      Role.fromRoleName(this, "admin-role-aws-auth", "Admin", { mutable: true }),
+      Role.fromRoleName(this, "admin-role-aws-auth", "Admin"),
       { groups: ["system:masters"] }
     );
   }
@@ -68,7 +68,7 @@ export class EksCluster extends Stack {
 
     cluster.grantAccess(
       "clusterAdminAccessRole",
-      Role.fromRoleName(this, "admin-role-access", "Admin", { mutable: true }).roleArn,
+      Role.fromRoleName(this, "admin-role-access", "Admin").roleArn,
       [
         AccessPolicy.fromAccessPolicyName("AmazonEKSClusterAdminPolicy", {
           accessScopeType: AccessScopeType.CLUSTER,
