@@ -6,6 +6,13 @@ import {
   InstanceType,
 } from "aws-cdk-lib/aws-ec2";
 
+import {
+  CompositePrincipal,
+  ManagedPolicy,
+  Role,
+  ServicePrincipal,
+} from "aws-cdk-lib/aws-iam";
+
 export class NodeGroups extends Construct {
   constructor(scope: Construct, id: string, cluster: Cluster) {
     super(scope, id);
@@ -34,6 +41,43 @@ export class NodeGroups extends Construct {
       }
     );
 
+    // IAM Role for node groups
+    const nodeGroupRole = new Role(this, "nodeGroupRole", {
+      assumedBy: new CompositePrincipal(
+        new ServicePrincipal("ec2.amazonaws.com")
+      ),
+    });
+
+    nodeGroupRole.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName(
+        "AmazonEC2ContainerRegistryReadOnly"
+      )
+    );
+    nodeGroupRole.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName("AmazonEKSWorkerNodePolicy")
+    );
+    nodeGroupRole.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName("AmazonEKS_CNI_Policy")
+    );
+
+    // (Optional) Only required if you need "EC2 Instance Connect"
+    nodeGroupRole.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMManagedInstanceCore")
+    );
+    // (Optional) Only required if you are using "SSM"
+    nodeGroupRole.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMPatchAssociation")
+    );
+
+    // (Optional) Only required if you have "Amazon CloudWatch Observability" setup
+    nodeGroupRole.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName("CloudWatchAgentServerPolicy")
+    );
+
+    nodeGroupRole.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName("AWSXrayWriteOnlyAccess")
+    );
+
     // HINT: required cdk v2.135.0 or higher version to support instanceTypes assignment when working with AL2023
     // - https://github.com/aws/aws-cdk/pull/29505
     // - https://github.com/aws/aws-cdk/releases/tag/v2.135.0
@@ -47,6 +91,7 @@ export class NodeGroups extends Construct {
       minSize: 2,
       maxSize: 5,
       capacityType: CapacityType.SPOT,
+      nodeRole: nodeGroupRole,
       launchTemplateSpec: {
         id: customizedLaunchTemplate.ref,
         version: customizedLaunchTemplate.attrLatestVersionNumber,
