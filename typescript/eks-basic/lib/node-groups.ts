@@ -17,8 +17,6 @@ export class NodeGroups extends Construct {
   constructor(scope: Construct, id: string, cluster: Cluster) {
     super(scope, id);
 
-    const nodeGroupNamePrefix = "cdk-managed";
-
     const customizedLaunchTemplate = new CfnLaunchTemplate(
       this,
       `{nodeGroupName}_LaunchTemplate`,
@@ -81,7 +79,7 @@ export class NodeGroups extends Construct {
     // HINT: required cdk v2.135.0 or higher version to support instanceTypes assignment when working with AL2023
     // - https://github.com/aws/aws-cdk/pull/29505
     // - https://github.com/aws/aws-cdk/releases/tag/v2.135.0
-    cluster.addNodegroupCapacity(nodeGroupNamePrefix + "-al2023", {
+    cluster.addNodegroupCapacity("mng-1", {
       amiType: NodegroupAmiType.AL2023_X86_64_STANDARD,
       instanceTypes: [
         new InstanceType("t3a.medium"),
