@@ -46,35 +46,28 @@ export class NodeGroups extends Construct {
       ),
     });
 
-    nodeGroupRole.addManagedPolicy(
-      ManagedPolicy.fromAwsManagedPolicyName(
-        "AmazonEC2ContainerRegistryReadOnly"
-      )
-    );
-    nodeGroupRole.addManagedPolicy(
-      ManagedPolicy.fromAwsManagedPolicyName("AmazonEKSWorkerNodePolicy")
-    );
-    nodeGroupRole.addManagedPolicy(
-      ManagedPolicy.fromAwsManagedPolicyName("AmazonEKS_CNI_Policy")
-    );
+    const policies = [
+      // Minimum policies
+      "AmazonEC2ContainerRegistryReadOnly",
+      "AmazonEKSWorkerNodePolicy",
+      "AmazonEKS_CNI_Policy",
 
-    // (Optional) Only required if you need "EC2 Instance Connect"
-    nodeGroupRole.addManagedPolicy(
-      ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMManagedInstanceCore")
-    );
-    // (Optional) Only required if you are using "SSM"
-    nodeGroupRole.addManagedPolicy(
-      ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMPatchAssociation")
-    );
+      // (Optional) Only required if you need "EC2 Instance Connect"
+      "AmazonSSMManagedInstanceCore",
 
-    // (Optional) Only required if you have "Amazon CloudWatch Observability" setup
-    nodeGroupRole.addManagedPolicy(
-      ManagedPolicy.fromAwsManagedPolicyName("CloudWatchAgentServerPolicy")
-    );
+      // (Optional) Only required if you are using "SSM"
+      "AmazonSSMPatchAssociation",
 
-    nodeGroupRole.addManagedPolicy(
-      ManagedPolicy.fromAwsManagedPolicyName("AWSXrayWriteOnlyAccess")
-    );
+      // (Optional) Only required if you have "Amazon CloudWatch Observability" setup
+      "CloudWatchAgentServerPolicy",
+      "AWSXrayWriteOnlyAccess",
+    ];
+
+    policies.forEach((policy) => {
+      nodeGroupRole.addManagedPolicy(
+        ManagedPolicy.fromAwsManagedPolicyName(policy)
+      );
+    });
 
     // HINT: required cdk v2.135.0 or higher version to support instanceTypes assignment when working with AL2023
     // - https://github.com/aws/aws-cdk/pull/29505
