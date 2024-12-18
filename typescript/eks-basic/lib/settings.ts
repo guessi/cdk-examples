@@ -23,14 +23,14 @@ export const clusterLogging = [
 
 // Chart version definitions
 
-export const chartVersionAwsLBC = "1.10.1";
+export const chartVersionAwsLBC = "1.11.0";
 
 // Managed Addons version definitions
 
 export const versionsKubeProxy: Map<KubernetesVersion, string> = new Map([
-  [KubernetesVersion.V1_31, "v1.31.2-eksbuild.3"],
-  [KubernetesVersion.V1_30, "v1.30.6-eksbuild.3"],
-  [KubernetesVersion.V1_29, "v1.29.10-eksbuild.3"],
+  [KubernetesVersion.V1_31, "v1.31.3-eksbuild.2"],
+  [KubernetesVersion.V1_30, "v1.30.7-eksbuild.2"],
+  [KubernetesVersion.V1_29, "v1.29.11-eksbuild.2"],
   [KubernetesVersion.V1_28, "v1.28.15-eksbuild.4"],
   [KubernetesVersion.V1_27, "v1.27.16-eksbuild.14"],
   [KubernetesVersion.V1_26, "v1.26.15-eksbuild.19"],
@@ -87,7 +87,7 @@ export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_24, versionsEbsCsiDriverDefault],
 ]);
 
-const versionsCwObservabilityDefault = "v2.5.0-eksbuild.1";
+const versionsCwObservabilityDefault = "v2.6.0-eksbuild.1";
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsCwObservabilityDefault],
   [KubernetesVersion.V1_30, versionsCwObservabilityDefault],
