@@ -39,7 +39,7 @@ export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_29, "v1.11.3-eksbuild.2"],
 ]);
 
-const versionsVpcCniDefault = "v1.19.0-eksbuild.1";
+const versionsVpcCniDefault = "v1.19.2-eksbuild.1";
 export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsVpcCniDefault],
   [KubernetesVersion.V1_30, versionsVpcCniDefault],
