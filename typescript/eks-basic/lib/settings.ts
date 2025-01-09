@@ -56,14 +56,14 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   ]
 );
 
-const versionsEbsCsiDriverDefault = "v1.37.0-eksbuild.1";
+const versionsEbsCsiDriverDefault = "v1.38.1-eksbuild.1";
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_30, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_29, versionsEbsCsiDriverDefault],
 ]);
 
-const versionsCwObservabilityDefault = "v2.6.0-eksbuild.1";
+const versionsCwObservabilityDefault = "v3.0.0-eksbuild.1";
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsCwObservabilityDefault],
   [KubernetesVersion.V1_30, versionsCwObservabilityDefault],
