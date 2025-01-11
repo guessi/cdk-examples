@@ -33,7 +33,7 @@ export const versionsKubeProxy: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_29, "v1.29.11-eksbuild.2"],
 ]);
 
-const versionsCoreDnsDefault = "v1.11.4-eksbuild.1";
+const versionsCoreDnsDefault = "v1.11.4-eksbuild.2";
 export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsCoreDnsDefault],
   [KubernetesVersion.V1_30, versionsCoreDnsDefault],
