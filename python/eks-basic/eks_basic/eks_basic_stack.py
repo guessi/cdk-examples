@@ -64,16 +64,7 @@ class EksBasicStack(Stack):
         eks.Addon(self, "VpcCni", cluster=cluster, addon_name="vpc-cni")
         eks.Addon(self, "CoreDns", cluster=cluster, addon_name="coredns")
         eks.Addon(self, "EksPodIdentityAgent", cluster=cluster, addon_name="eks-pod-identity-agent")
-
-        # https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_eks/HelmChart.html
-        eks.HelmChart(
-            self,
-            "MetricsServer",
-            cluster=cluster,
-            chart="metrics-server",
-            repository="https://kubernetes-sigs.github.io/metrics-server",
-            namespace="kube-system",
-        )
+        eks.Addon(self, "MetricsServer", cluster=cluster, addon_name="metrics-server")
 
         # https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_eks/README.html#access-entry
         # cluster.grant_access(

@@ -7,6 +7,7 @@ import {
   versionsPodIdentityAgent,
   versionsEbsCsiDriver,
   versionsCwObservability,
+  versionsMetricsServer,
 } from "./settings";
 
 export class ManagedAddons extends Construct {
@@ -63,6 +64,14 @@ export class ManagedAddons extends Construct {
       addonName: "amazon-cloudwatch-observability",
       clusterName: cluster.clusterName,
       addonVersion: versionsCwObservability.get(clusterVersion),
+      resolveConflicts: "OVERWRITE",
+    });
+
+    // metrics-server
+    new CfnAddon(this, "cfnAddonMetricsServer", {
+      addonName: "metrics-server",
+      clusterName: cluster.clusterName,
+      addonVersion: versionsMetricsServer.get(clusterVersion),
       resolveConflicts: "OVERWRITE",
     });
   }
