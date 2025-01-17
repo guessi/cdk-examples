@@ -63,7 +63,7 @@ export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_29, versionsEbsCsiDriverDefault],
 ]);
 
-const versionsCwObservabilityDefault = "v3.0.0-eksbuild.1";
+const versionsCwObservabilityDefault = "v3.1.0-eksbuild.1";
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsCwObservabilityDefault],
   [KubernetesVersion.V1_30, versionsCwObservabilityDefault],
