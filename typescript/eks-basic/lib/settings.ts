@@ -29,8 +29,8 @@ export const chartVersionAwsLBC = "1.11.0";
 
 export const versionsKubeProxy: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, "v1.31.3-eksbuild.2"],
-  [KubernetesVersion.V1_30, "v1.30.7-eksbuild.2"],
-  [KubernetesVersion.V1_29, "v1.29.11-eksbuild.2"],
+  [KubernetesVersion.V1_30, "v1.30.9-eksbuild.3"],
+  [KubernetesVersion.V1_29, "v1.29.13-eksbuild.3"],
 ]);
 
 const versionsCoreDnsDefault = "v1.11.4-eksbuild.2";
@@ -40,7 +40,7 @@ export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_29, versionsCoreDnsDefault],
 ]);
 
-const versionsVpcCniDefault = "v1.19.2-eksbuild.1";
+const versionsVpcCniDefault = "v1.19.2-eksbuild.5";
 export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsVpcCniDefault],
   [KubernetesVersion.V1_30, versionsVpcCniDefault],
@@ -56,14 +56,14 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   ]
 );
 
-const versionsEbsCsiDriverDefault = "v1.38.1-eksbuild.1";
+const versionsEbsCsiDriverDefault = "v1.39.0-eksbuild.1";
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_30, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_29, versionsEbsCsiDriverDefault],
 ]);
 
-const versionsCwObservabilityDefault = "v3.0.0-eksbuild.1";
+const versionsCwObservabilityDefault = "v3.3.0-eksbuild.1";
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsCwObservabilityDefault],
   [KubernetesVersion.V1_30, versionsCwObservabilityDefault],
