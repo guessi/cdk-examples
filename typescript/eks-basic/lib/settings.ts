@@ -56,7 +56,7 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   ]
 );
 
-const versionsEbsCsiDriverDefault = "v1.38.1-eksbuild.1";
+const versionsEbsCsiDriverDefault = "v1.38.1-eksbuild.2";
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_30, versionsEbsCsiDriverDefault],
