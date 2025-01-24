@@ -19,7 +19,7 @@ class LambdaSecretManagerStack(Stack):
         )
 
         fn = lambda_.Function(self, "Function",
-            runtime=lambda_.Runtime.PYTHON_3_12,
+            runtime=lambda_.Runtime.PYTHON_3_13,
             handler="app.lambda_handler",
             code=lambda_.Code.from_asset("lambda_code"),
             environment={
