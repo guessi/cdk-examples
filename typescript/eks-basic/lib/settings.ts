@@ -47,7 +47,7 @@ export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_29, versionsVpcCniDefault],
 ]);
 
-const versionsPodIdentityAgentDefault = "v1.3.4-eksbuild.1";
+const versionsPodIdentityAgentDefault = "v1.3.5-eksbuild.2";
 export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   [
     [KubernetesVersion.V1_31, versionsPodIdentityAgentDefault],
@@ -70,7 +70,7 @@ export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_29, versionsCwObservabilityDefault],
 ]);
 
-const versionsMetricsServerDefault = "v0.7.2-eksbuild.1";
+const versionsMetricsServerDefault = "v0.7.2-eksbuild.2";
 export const versionsMetricsServer: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, versionsMetricsServerDefault],
   [KubernetesVersion.V1_30, versionsMetricsServerDefault],
