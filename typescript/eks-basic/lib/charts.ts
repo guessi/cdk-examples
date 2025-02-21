@@ -23,14 +23,5 @@ export class Charts extends Construct {
       timeout: Duration.minutes(5),
       wait: true,
     });
-
-    // metrics-server
-    new HelmChart(this, "metrics-server", {
-      cluster: cluster,
-      chart: "metrics-server",
-      repository: "https://kubernetes-sigs.github.io/metrics-server",
-      namespace: "kube-system",
-      release: "metrics-server",
-    });
   }
 }
