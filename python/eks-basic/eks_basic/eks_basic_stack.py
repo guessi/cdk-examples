@@ -1,9 +1,8 @@
 from aws_cdk import Stack
 from aws_cdk import aws_eks as eks
 from aws_cdk import aws_ec2 as ec2
-from aws_cdk import aws_iam as iam
 
-from aws_cdk.lambda_layer_kubectl_v31 import KubectlV31Layer
+from aws_cdk.lambda_layer_kubectl_v32 import KubectlV32Layer as KubectlLayer
 
 from constructs import Construct
 
@@ -19,7 +18,7 @@ class EksBasicStack(Stack):
             ip_addresses=ec2.IpAddresses.cidr("192.168.0.0/16")
         )
 
-        eks_version = eks.KubernetesVersion.V1_31
+        eks_version = eks.KubernetesVersion.V1_32
         eks_cluster_name = "EksBasicStack"
 
         cluster_logging_setup = [
@@ -38,7 +37,7 @@ class EksBasicStack(Stack):
             vpc_subnets=[ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS)],
             cluster_name=eks_cluster_name,
             version=eks_version,
-            kubectl_layer=KubectlV31Layer(self, "kubectl"),
+            kubectl_layer=KubectlLayer(self, "kubectl"),
             default_capacity=0,
             authentication_mode=eks.AuthenticationMode.API_AND_CONFIG_MAP,
             endpoint_access=eks.EndpointAccess.PUBLIC_AND_PRIVATE,
