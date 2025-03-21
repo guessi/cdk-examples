@@ -23,7 +23,7 @@ export const clusterLogging = [
 
 // Chart version definitions
 
-export const chartVersionAwsLBC = "1.11.0";
+export const chartVersionAwsLBC = "1.12.0";
 
 // Managed Addons version definitions
 
@@ -60,7 +60,7 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
   ]
 );
 
-const versionsEbsCsiDriverDefault = "v1.39.0-eksbuild.1";
+const versionsEbsCsiDriverDefault = "v1.40.0-eksbuild.1";
 export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_32, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_31, versionsEbsCsiDriverDefault],
@@ -68,7 +68,7 @@ export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_29, versionsEbsCsiDriverDefault],
 ]);
 
-const versionsCwObservabilityDefault = "v3.3.1-eksbuild.1";
+const versionsCwObservabilityDefault = "v3.4.0-eksbuild.1";
 export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_32, versionsCwObservabilityDefault],
   [KubernetesVersion.V1_31, versionsCwObservabilityDefault],
