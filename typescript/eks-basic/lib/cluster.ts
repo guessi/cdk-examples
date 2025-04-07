@@ -34,25 +34,8 @@ export class EksCluster extends Stack {
     new Charts(this, "Charts", cluster);
     new ManagedAddons(this, "ManagedAddons", cluster, settings.clusterVersion);
 
-    // Setup ConfigMaps/aws-auth
-    this.setupAwsAuth(cluster);
-
     // Setup Access Entries
     this.setupAccessEntries(cluster);
-  }
-
-  private setupAwsAuth(cluster: Cluster) {
-    // mapUsers
-    cluster.awsAuth.addUserMapping(
-      User.fromUserName(this, "admin-user-aws-atuh", "admin-cli"),
-      { groups: ["system:masters"] }
-    );
-
-    // mapRoles
-    cluster.awsAuth.addRoleMapping(
-      Role.fromRoleName(this, "admin-role-aws-auth", "Admin"),
-      { groups: ["system:masters"] }
-    );
   }
 
   private setupAccessEntries(cluster: Cluster) {
