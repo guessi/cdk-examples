@@ -1,78 +1,85 @@
 import { Construct } from "constructs";
-import { Cluster, KubernetesVersion, CfnAddon } from "aws-cdk-lib/aws-eks";
+import { Cluster, CfnAddon } from "aws-cdk-lib/aws-eks";
 import {
-  versionsKubeProxy,
-  versionsCoreDNS,
-  versionsVpcCni,
-  versionsPodIdentityAgent,
-  versionsEbsCsiDriver,
-  versionsCwObservability,
-  versionsMetricsServer,
+  addonVersions,
+  clusterVersion,
+  defaultAddonVersions,
+  resolveConflicts,
+  supportedAddonKubeProxy,
+  supportedAddonCoreDns,
+  supportedAddonVpcCni,
+  supportedAddonPodIdentityAgent,
+  supportedAddonEbsCsiDriver,
+  supportedAddonCloudWatchObservability,
+  supportedAddonMetricsServer,
 } from "./settings";
 
 export class ManagedAddons extends Construct {
-  constructor(
-    scope: Construct,
-    id: string,
-    cluster: Cluster,
-    clusterVersion: KubernetesVersion
-  ) {
+  constructor(scope: Construct, id: string, cluster: Cluster) {
     super(scope, id);
 
     // kube-proxy
     new CfnAddon(this, "cfnAddonKubeProxy", {
-      addonName: "kube-proxy",
+      addonName: supportedAddonKubeProxy,
       clusterName: cluster.clusterName,
-      addonVersion: versionsKubeProxy.get(clusterVersion),
-      resolveConflicts: "OVERWRITE",
+      addonVersion: this.getAddonVersion(supportedAddonKubeProxy),
+      resolveConflicts: resolveConflicts,
     });
 
     // coredns
     new CfnAddon(this, "cfnAddonCoreDns", {
-      addonName: "coredns",
+      addonName: supportedAddonCoreDns,
       clusterName: cluster.clusterName,
-      addonVersion: versionsCoreDNS.get(clusterVersion),
-      resolveConflicts: "OVERWRITE",
+      addonVersion: this.getAddonVersion(supportedAddonCoreDns),
+      resolveConflicts: resolveConflicts,
     });
 
     // vpc-cni
     new CfnAddon(this, "cfnAddonVpcCni", {
-      addonName: "vpc-cni",
+      addonName: supportedAddonVpcCni,
       clusterName: cluster.clusterName,
-      addonVersion: versionsVpcCni.get(clusterVersion),
-      resolveConflicts: "OVERWRITE",
+      addonVersion: this.getAddonVersion(supportedAddonVpcCni),
+      resolveConflicts: resolveConflicts,
     });
 
     // eks-pod-identity-agent (Only Amazon EKS 1.24+ are supported)
     new CfnAddon(this, "cfnAddonEksPodIdentityAgent", {
-      addonName: "eks-pod-identity-agent",
+      addonName: supportedAddonPodIdentityAgent,
       clusterName: cluster.clusterName,
-      addonVersion: versionsPodIdentityAgent.get(clusterVersion),
-      resolveConflicts: "OVERWRITE",
+      addonVersion: this.getAddonVersion(supportedAddonPodIdentityAgent),
+      resolveConflicts: resolveConflicts,
     });
 
     // aws-ebs-csi-driver
     new CfnAddon(this, "cfnAddonEbsCsi", {
-      addonName: "aws-ebs-csi-driver",
+      addonName: supportedAddonEbsCsiDriver,
       clusterName: cluster.clusterName,
-      addonVersion: versionsEbsCsiDriver.get(clusterVersion),
-      resolveConflicts: "OVERWRITE",
+      addonVersion: this.getAddonVersion(supportedAddonEbsCsiDriver),
+      resolveConflicts: resolveConflicts,
     });
 
     // amazon-cloudwatch-observability
     new CfnAddon(this, "cfnAddonAmazonCloudwatchObservability", {
-      addonName: "amazon-cloudwatch-observability",
+      addonName: supportedAddonCloudWatchObservability,
       clusterName: cluster.clusterName,
-      addonVersion: versionsCwObservability.get(clusterVersion),
-      resolveConflicts: "OVERWRITE",
+      addonVersion: this.getAddonVersion(supportedAddonCloudWatchObservability),
+      resolveConflicts: resolveConflicts,
     });
 
     // metrics-server
     new CfnAddon(this, "cfnAddonMetricsServer", {
-      addonName: "metrics-server",
+      addonName: supportedAddonMetricsServer,
       clusterName: cluster.clusterName,
-      addonVersion: versionsMetricsServer.get(clusterVersion),
-      resolveConflicts: "OVERWRITE",
+      addonVersion: this.getAddonVersion(supportedAddonMetricsServer),
+      resolveConflicts: resolveConflicts,
     });
+  }
+
+  private getAddonVersion(addonName: string) {
+    return (
+      addonVersions?.get(addonName)?.get(clusterVersion) ??
+      defaultAddonVersions?.get(addonName) ??
+      undefined
+    );
   }
 }

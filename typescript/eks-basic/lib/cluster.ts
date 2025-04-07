@@ -32,7 +32,7 @@ export class EksCluster extends Stack {
 
     new NodeGroups(this, "NodeGroup", cluster);
     new Charts(this, "Charts", cluster);
-    new ManagedAddons(this, "ManagedAddons", cluster, settings.clusterVersion);
+    new ManagedAddons(this, "ManagedAddons", cluster);
 
     // Setup Access Entries
     this.setupAccessEntries(cluster);
