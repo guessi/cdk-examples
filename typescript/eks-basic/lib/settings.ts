@@ -33,7 +33,6 @@ export const versionsKubeProxy: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_31, "v1.32.0-eksbuild.2"],
   [KubernetesVersion.V1_31, "v1.31.3-eksbuild.2"],
   [KubernetesVersion.V1_30, "v1.30.9-eksbuild.3"],
-  [KubernetesVersion.V1_29, "v1.29.13-eksbuild.3"],
 ]);
 
 const versionsCoreDnsDefault = "v1.11.4-eksbuild.2";
@@ -41,7 +40,6 @@ export const versionsCoreDNS: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_32, versionsCoreDnsDefault],
   [KubernetesVersion.V1_31, versionsCoreDnsDefault],
   [KubernetesVersion.V1_30, versionsCoreDnsDefault],
-  [KubernetesVersion.V1_29, versionsCoreDnsDefault],
 ]);
 
 const versionsVpcCniDefault = "v1.19.2-eksbuild.5";
@@ -49,7 +47,6 @@ export const versionsVpcCni: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_32, versionsVpcCniDefault],
   [KubernetesVersion.V1_31, versionsVpcCniDefault],
   [KubernetesVersion.V1_30, versionsVpcCniDefault],
-  [KubernetesVersion.V1_29, versionsVpcCniDefault],
 ]);
 
 const versionsPodIdentityAgentDefault = "v1.3.5-eksbuild.2";
@@ -58,7 +55,6 @@ export const versionsPodIdentityAgent: Map<KubernetesVersion, string> = new Map(
     [KubernetesVersion.V1_32, versionsPodIdentityAgentDefault],
     [KubernetesVersion.V1_31, versionsPodIdentityAgentDefault],
     [KubernetesVersion.V1_30, versionsPodIdentityAgentDefault],
-    [KubernetesVersion.V1_29, versionsPodIdentityAgentDefault],
   ]
 );
 
@@ -67,7 +63,6 @@ export const versionsEbsCsiDriver: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_32, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_31, versionsEbsCsiDriverDefault],
   [KubernetesVersion.V1_30, versionsEbsCsiDriverDefault],
-  [KubernetesVersion.V1_29, versionsEbsCsiDriverDefault],
 ]);
 
 const versionsCwObservabilityDefault = "v3.4.0-eksbuild.1";
@@ -75,7 +70,6 @@ export const versionsCwObservability: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_32, versionsCwObservabilityDefault],
   [KubernetesVersion.V1_31, versionsCwObservabilityDefault],
   [KubernetesVersion.V1_30, versionsCwObservabilityDefault],
-  [KubernetesVersion.V1_29, versionsCwObservabilityDefault],
 ]);
 
 const versionsMetricsServerDefault = "v0.7.2-eksbuild.2";
@@ -83,7 +77,6 @@ export const versionsMetricsServer: Map<KubernetesVersion, string> = new Map([
   [KubernetesVersion.V1_32, versionsMetricsServerDefault],
   [KubernetesVersion.V1_31, versionsMetricsServerDefault],
   [KubernetesVersion.V1_30, versionsMetricsServerDefault],
-  [KubernetesVersion.V1_29, versionsMetricsServerDefault],
 ]);
 
 /*
@@ -100,7 +93,7 @@ export const versionsMetricsServer: Map<KubernetesVersion, string> = new Map([
 
   ADDON_NAME=kube-proxy
 
-  SUPPORTED_K8S_VERSION=("1.32" "1.31" "1.30" "1.29")
+  SUPPORTED_K8S_VERSION=("1.32" "1.31" "1.30")
 
   for K8S_VERSION in ${SUPPORTED_K8S_VERSION[@]}; do \
     aws eks describe-addon-versions \
