@@ -19,10 +19,10 @@ export class EksCluster extends Stack {
 
     const cluster = new Cluster(this, "cdk-eks-cluster", {
       clusterName: settings.clusterName,
-      version: settings.targetEksVersion,
+      version: settings.clusterVersion,
       endpointAccess: settings.endpointAccess,
       kubectlLayer: new kubectlLayer(this, "kubectl"),
-      authenticationMode: AuthenticationMode.API_AND_CONFIG_MAP,
+      authenticationMode: settings.authenticationMode,
       vpcSubnets: [{ subnetType: settings.subnetType }],
       ipFamily: settings.ipFamily,
       serviceIpv4Cidr: settings.serviceIpv4Cidr,
@@ -32,7 +32,7 @@ export class EksCluster extends Stack {
 
     new NodeGroups(this, "NodeGroup", cluster);
     new Charts(this, "Charts", cluster);
-    new ManagedAddons(this, "ManagedAddons", cluster, settings.targetEksVersion);
+    new ManagedAddons(this, "ManagedAddons", cluster, settings.clusterVersion);
 
     // Setup ConfigMaps/aws-auth
     this.setupAwsAuth(cluster);

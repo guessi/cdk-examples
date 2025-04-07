@@ -1,5 +1,6 @@
 import { SubnetType } from "aws-cdk-lib/aws-ec2";
 import {
+  AuthenticationMode,
   KubernetesVersion,
   EndpointAccess,
   IpFamily,
@@ -7,8 +8,9 @@ import {
 } from "aws-cdk-lib/aws-eks";
 
 export const clusterName = "cdk-eks-cluster";
-export const targetEksVersion = KubernetesVersion.V1_32;
+export const clusterVersion = KubernetesVersion.V1_32;
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
+export const authenticationMode = AuthenticationMode.API_AND_CONFIG_MAP;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;
 export const ipFamily = IpFamily.IP_V4;
 export const serviceIpv4Cidr = "172.20.0.0/16";
