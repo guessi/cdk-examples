@@ -5,13 +5,13 @@ import {
   clusterVersion,
   defaultAddonVersions,
   resolveConflicts,
-  supportedAddonKubeProxy,
-  supportedAddonCoreDns,
-  supportedAddonVpcCni,
-  supportedAddonPodIdentityAgent,
-  supportedAddonEbsCsiDriver,
-  supportedAddonCloudWatchObservability,
-  supportedAddonMetricsServer,
+  addonKubeProxy,
+  addonCoreDns,
+  addonVpcCni,
+  addonPodIdentityAgent,
+  addonEbsCsiDriver,
+  addonCloudWatchObservability,
+  addonMetricsServer,
 } from "./settings";
 
 export class ManagedAddons extends Construct {
@@ -20,57 +20,57 @@ export class ManagedAddons extends Construct {
 
     // kube-proxy
     new CfnAddon(this, "cfnAddonKubeProxy", {
-      addonName: supportedAddonKubeProxy,
+      addonName: addonKubeProxy,
       clusterName: cluster.clusterName,
-      addonVersion: this.getAddonVersion(supportedAddonKubeProxy),
+      addonVersion: this.getAddonVersion(addonKubeProxy),
       resolveConflicts: resolveConflicts,
     });
 
     // coredns
     new CfnAddon(this, "cfnAddonCoreDns", {
-      addonName: supportedAddonCoreDns,
+      addonName: addonCoreDns,
       clusterName: cluster.clusterName,
-      addonVersion: this.getAddonVersion(supportedAddonCoreDns),
+      addonVersion: this.getAddonVersion(addonCoreDns),
       resolveConflicts: resolveConflicts,
     });
 
     // vpc-cni
     new CfnAddon(this, "cfnAddonVpcCni", {
-      addonName: supportedAddonVpcCni,
+      addonName: addonVpcCni,
       clusterName: cluster.clusterName,
-      addonVersion: this.getAddonVersion(supportedAddonVpcCni),
+      addonVersion: this.getAddonVersion(addonVpcCni),
       resolveConflicts: resolveConflicts,
     });
 
     // eks-pod-identity-agent (Only Amazon EKS 1.24+ are supported)
     new CfnAddon(this, "cfnAddonEksPodIdentityAgent", {
-      addonName: supportedAddonPodIdentityAgent,
+      addonName: addonPodIdentityAgent,
       clusterName: cluster.clusterName,
-      addonVersion: this.getAddonVersion(supportedAddonPodIdentityAgent),
+      addonVersion: this.getAddonVersion(addonPodIdentityAgent),
       resolveConflicts: resolveConflicts,
     });
 
     // aws-ebs-csi-driver
     new CfnAddon(this, "cfnAddonEbsCsi", {
-      addonName: supportedAddonEbsCsiDriver,
+      addonName: addonEbsCsiDriver,
       clusterName: cluster.clusterName,
-      addonVersion: this.getAddonVersion(supportedAddonEbsCsiDriver),
+      addonVersion: this.getAddonVersion(addonEbsCsiDriver),
       resolveConflicts: resolveConflicts,
     });
 
     // amazon-cloudwatch-observability
     new CfnAddon(this, "cfnAddonAmazonCloudwatchObservability", {
-      addonName: supportedAddonCloudWatchObservability,
+      addonName: addonCloudWatchObservability,
       clusterName: cluster.clusterName,
-      addonVersion: this.getAddonVersion(supportedAddonCloudWatchObservability),
+      addonVersion: this.getAddonVersion(addonCloudWatchObservability),
       resolveConflicts: resolveConflicts,
     });
 
     // metrics-server
     new CfnAddon(this, "cfnAddonMetricsServer", {
-      addonName: supportedAddonMetricsServer,
+      addonName: addonMetricsServer,
       clusterName: cluster.clusterName,
-      addonVersion: this.getAddonVersion(supportedAddonMetricsServer),
+      addonVersion: this.getAddonVersion(addonMetricsServer),
       resolveConflicts: resolveConflicts,
     });
   }

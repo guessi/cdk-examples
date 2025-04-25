@@ -30,28 +30,27 @@ export const chartVersionAwsLBC = "1.12.0";
 
 // Managed Addons version definitions
 
-export const supportedAddonKubeProxy = "kube-proxy";
-export const supportedAddonCoreDns = "coredns";
-export const supportedAddonVpcCni = "vpc-cni";
-export const supportedAddonPodIdentityAgent = "eks-pod-identity-agent";
-export const supportedAddonEbsCsiDriver = "aws-ebs-csi-driver";
-export const supportedAddonCloudWatchObservability =
-  "amazon-cloudwatch-observability";
-export const supportedAddonMetricsServer = "metrics-server";
+export const addonKubeProxy = "kube-proxy";
+export const addonCoreDns = "coredns";
+export const addonVpcCni = "vpc-cni";
+export const addonPodIdentityAgent = "eks-pod-identity-agent";
+export const addonEbsCsiDriver = "aws-ebs-csi-driver";
+export const addonCloudWatchObservability = "amazon-cloudwatch-observability";
+export const addonMetricsServer = "metrics-server";
 
 export const defaultAddonVersions = new Map([
-  [supportedAddonKubeProxy, undefined],
-  [supportedAddonCoreDns, "v1.11.4-eksbuild.2"],
-  [supportedAddonVpcCni, "v1.19.4-eksbuild.1"],
-  [supportedAddonPodIdentityAgent, "v1.3.5-eksbuild.2"],
-  [supportedAddonEbsCsiDriver, "v1.42.0-eksbuild.1"],
-  [supportedAddonCloudWatchObservability, "v3.6.0-eksbuild.2"],
-  [supportedAddonMetricsServer, "v0.7.2-eksbuild.3"],
+  [addonKubeProxy, undefined],
+  [addonCoreDns, "v1.11.4-eksbuild.2"],
+  [addonVpcCni, "v1.19.4-eksbuild.1"],
+  [addonPodIdentityAgent, "v1.3.5-eksbuild.2"],
+  [addonEbsCsiDriver, "v1.42.0-eksbuild.1"],
+  [addonCloudWatchObservability, "v3.6.0-eksbuild.2"],
+  [addonMetricsServer, "v0.7.2-eksbuild.3"],
 ]);
 
 export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
-    supportedAddonKubeProxy,
+    addonKubeProxy,
     new Map([
       [KubernetesVersion.V1_32, "v1.32.3-eksbuild.2"],
       [KubernetesVersion.V1_31, "v1.31.3-eksbuild.2"],
