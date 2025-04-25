@@ -33,7 +33,7 @@ export const chartVersionAwsLBC = "1.12.0";
 export const supportedAddonKubeProxy = "kube-proxy";
 export const supportedAddonCoreDns = "coredns";
 export const supportedAddonVpcCni = "vpc-cni";
-export const supportedAddonPodIdentityAgent = "pod-identity-agent";
+export const supportedAddonPodIdentityAgent = "eks-pod-identity-agent";
 export const supportedAddonEbsCsiDriver = "aws-ebs-csi-driver";
 export const supportedAddonCloudWatchObservability =
   "amazon-cloudwatch-observability";
