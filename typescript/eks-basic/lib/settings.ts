@@ -42,18 +42,18 @@ export const supportedAddonMetricsServer = "metrics-server";
 export const defaultAddonVersions = new Map([
   [supportedAddonKubeProxy, undefined],
   [supportedAddonCoreDns, "v1.11.4-eksbuild.2"],
-  [supportedAddonVpcCni, "v1.19.3-eksbuild.1"],
+  [supportedAddonVpcCni, "v1.19.4-eksbuild.1"],
   [supportedAddonPodIdentityAgent, "v1.3.5-eksbuild.2"],
-  [supportedAddonEbsCsiDriver, "v1.41.0-eksbuild.1"],
+  [supportedAddonEbsCsiDriver, "v1.42.0-eksbuild.1"],
   [supportedAddonCloudWatchObservability, "v3.6.0-eksbuild.2"],
-  [supportedAddonMetricsServer, "v0.7.2-eksbuild.2"],
+  [supportedAddonMetricsServer, "v0.7.2-eksbuild.3"],
 ]);
 
 export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     supportedAddonKubeProxy,
     new Map([
-      [KubernetesVersion.V1_32, "v1.32.0-eksbuild.2"],
+      [KubernetesVersion.V1_32, "v1.32.3-eksbuild.2"],
       [KubernetesVersion.V1_31, "v1.31.3-eksbuild.2"],
       [KubernetesVersion.V1_30, "v1.30.9-eksbuild.3"],
     ]),
