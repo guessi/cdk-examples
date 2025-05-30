@@ -48,7 +48,7 @@ export class NodeGroups extends Construct {
 
     const policies = [
       // Minimum policies
-      "AmazonEC2ContainerRegistryReadOnly",
+      "AmazonEC2ContainerRegistryPullOnly",
       "AmazonEKSWorkerNodePolicy",
       "AmazonEKS_CNI_Policy",
 
