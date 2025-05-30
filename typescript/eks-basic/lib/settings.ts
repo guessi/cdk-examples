@@ -26,7 +26,7 @@ export const resolveConflicts = "OVERWRITE";
 
 // Chart version definitions
 
-export const chartVersionAwsLBC = "1.13.1";
+export const chartVersionAwsLBC = "1.13.2";
 
 // Managed Addons version definitions
 
@@ -40,11 +40,11 @@ export const addonMetricsServer = "metrics-server";
 
 export const defaultAddonVersions = new Map([
   [addonKubeProxy, undefined],
-  [addonCoreDns, "v1.11.4-eksbuild.10"],
-  [addonVpcCni, "v1.19.5-eksbuild.1"],
+  [addonCoreDns, "v1.11.4-eksbuild.14"],
+  [addonVpcCni, "v1.19.5-eksbuild.3"],
   [addonPodIdentityAgent, "v1.3.7-eksbuild.2"],
-  [addonEbsCsiDriver, "v1.43.0-eksbuild.1"],
-  [addonCloudWatchObservability, "v4.0.0-eksbuild.1"],
+  [addonEbsCsiDriver, "v1.44.0-eksbuild.1"],
+  [addonCloudWatchObservability, "v4.0.1-eksbuild.1"],
   [addonMetricsServer, "v0.7.2-eksbuild.3"],
 ]);
 
