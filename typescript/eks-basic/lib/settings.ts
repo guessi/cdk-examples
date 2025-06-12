@@ -8,7 +8,8 @@ import {
 } from "aws-cdk-lib/aws-eks";
 
 export const clusterName = "cdk-eks-cluster";
-export const clusterVersion = KubernetesVersion.V1_32;
+
+export const clusterVersion = KubernetesVersion.of("1.33"); // TODO: change to KubernetesVersion.V1_33 after https://github.com/aws/aws-cdk/pull/34602 get merged
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
 export const authenticationMode = AuthenticationMode.API_AND_CONFIG_MAP;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;
@@ -52,6 +53,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonKubeProxy,
     new Map([
+      [KubernetesVersion.of("1.33"), "v1.33.0-eksbuild.2"], // TODO: change to KubernetesVersion.V1_33 after https://github.com/aws/aws-cdk/pull/34602 get merged
       [KubernetesVersion.V1_32, "v1.32.3-eksbuild.7"],
       [KubernetesVersion.V1_31, "v1.31.7-eksbuild.7"],
       [KubernetesVersion.V1_30, "v1.30.11-eksbuild.5"],
