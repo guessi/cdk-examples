@@ -44,7 +44,7 @@ export const defaultAddonVersions = new Map([
   [addonVpcCni, "v1.19.5-eksbuild.3"],
   [addonPodIdentityAgent, "v1.3.7-eksbuild.2"],
   [addonEbsCsiDriver, "v1.44.0-eksbuild.1"],
-  [addonCloudWatchObservability, "v4.0.1-eksbuild.1"],
+  [addonCloudWatchObservability, "v4.1.0-eksbuild.1"],
   [addonMetricsServer, "v0.7.2-eksbuild.3"],
 ]);
 
