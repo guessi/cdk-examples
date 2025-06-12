@@ -8,7 +8,8 @@ import {
 } from "aws-cdk-lib/aws-eks";
 
 export const clusterName = "cdk-eks-cluster";
-export const clusterVersion = KubernetesVersion.V1_32;
+
+export const clusterVersion = KubernetesVersion.of("1.33"); // TODO: change to KubernetesVersion.V1_33 after https://github.com/aws/aws-cdk/pull/34602 get merged
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
 export const authenticationMode = AuthenticationMode.API_AND_CONFIG_MAP;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;

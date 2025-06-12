@@ -2,7 +2,7 @@ from aws_cdk import Stack
 from aws_cdk import aws_eks as eks
 from aws_cdk import aws_ec2 as ec2
 
-from aws_cdk.lambda_layer_kubectl_v32 import KubectlV32Layer as KubectlLayer
+from aws_cdk.lambda_layer_kubectl_v33 import KubectlV33Layer as KubectlLayer
 
 from constructs import Construct
 
@@ -18,7 +18,8 @@ class EksBasicStack(Stack):
             ip_addresses=ec2.IpAddresses.cidr("192.168.0.0/16")
         )
 
-        eks_version = eks.KubernetesVersion.V1_32
+        # TODO: change to KubernetesVersion.V1_33 after https://github.com/aws/aws-cdk/pull/34602 get merged
+        eks_version = eks.KubernetesVersion.of("1.33")
         eks_cluster_name = "EksBasicStack"
 
         cluster_logging_setup = [
