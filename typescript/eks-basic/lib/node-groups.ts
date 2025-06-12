@@ -20,29 +20,34 @@ export class NodeGroups extends Construct {
   constructor(scope: Construct, id: string, cluster: Cluster) {
     super(scope, id);
 
-    const customizedLaunchTemplate = new CfnLaunchTemplate(
-      this,
-      `{nodeGroupName}_LaunchTemplate`,
-      {
-        launchTemplateData: {
-          blockDeviceMappings: [
-            {
-              deviceName: "/dev/xvda",
-              ebs: {
-                volumeType: EbsDeviceVolumeType.GENERAL_PURPOSE_SSD_GP3,
-                volumeSize: 30,
-              },
-            },
-          ],
-          metadataOptions: {
-            httpTokens: LaunchTemplateHttpTokens.REQUIRED,
-            httpPutResponseHopLimit: 2,
-          },
-        },
-      }
-    );
+    const customizedLaunchTemplate = this.customizedLaunchTemplate();
+    const nodeGroupRole = this.nodeGroupRole();
 
-    // IAM Role for node groups
+    // HINT: required cdk v2.135.0 or higher version to support instanceTypes assignment when working with AL2023
+    // - https://github.com/aws/aws-cdk/pull/29505
+    // - https://github.com/aws/aws-cdk/releases/tag/v2.135.0
+    cluster.addNodegroupCapacity("mng-1", {
+      amiType: NodegroupAmiType.AL2023_X86_64_STANDARD,
+      instanceTypes: [
+        InstanceType.of(InstanceClass.T3A, InstanceSize.MEDIUM),
+        InstanceType.of(InstanceClass.T3, InstanceSize.MEDIUM),
+      ],
+      desiredSize: 2,
+      minSize: 2,
+      maxSize: 5,
+      capacityType: CapacityType.SPOT,
+      nodeRole: nodeGroupRole,
+      launchTemplateSpec: {
+        id: customizedLaunchTemplate.ref,
+        version: customizedLaunchTemplate.attrLatestVersionNumber,
+      },
+      tags: {
+        "managed-by": "cdk",
+      },
+    });
+  }
+
+  private nodeGroupRole() {
     const nodeGroupRole = new Role(this, "nodeGroupRole", {
       assumedBy: new CompositePrincipal(
         new ServicePrincipal("ec2.amazonaws.com")
@@ -71,28 +76,30 @@ export class NodeGroups extends Construct {
         ManagedPolicy.fromAwsManagedPolicyName(policy)
       );
     });
+    return nodeGroupRole;
+  }
 
-    // HINT: required cdk v2.135.0 or higher version to support instanceTypes assignment when working with AL2023
-    // - https://github.com/aws/aws-cdk/pull/29505
-    // - https://github.com/aws/aws-cdk/releases/tag/v2.135.0
-    cluster.addNodegroupCapacity("mng-1", {
-      amiType: NodegroupAmiType.AL2023_X86_64_STANDARD,
-      instanceTypes: [
-        InstanceType.of(InstanceClass.T3A, InstanceSize.MEDIUM),
-        InstanceType.of(InstanceClass.T3, InstanceSize.MEDIUM),
-      ],
-      desiredSize: 2,
-      minSize: 2,
-      maxSize: 5,
-      capacityType: CapacityType.SPOT,
-      nodeRole: nodeGroupRole,
-      launchTemplateSpec: {
-        id: customizedLaunchTemplate.ref,
-        version: customizedLaunchTemplate.attrLatestVersionNumber,
-      },
-      tags: {
-        "managed-by": "cdk",
-      },
-    });
+  private customizedLaunchTemplate() {
+    return new CfnLaunchTemplate(
+      this,
+      `{nodeGroupName}_LaunchTemplate`,
+      {
+        launchTemplateData: {
+          blockDeviceMappings: [
+            {
+              deviceName: "/dev/xvda",
+              ebs: {
+                volumeType: EbsDeviceVolumeType.GENERAL_PURPOSE_SSD_GP3,
+                volumeSize: 30,
+              },
+            },
+          ],
+          metadataOptions: {
+            httpTokens: LaunchTemplateHttpTokens.REQUIRED,
+            httpPutResponseHopLimit: 2,
+          },
+        },
+      }
+    );
   }
 }
