@@ -4,6 +4,9 @@ import {
   CfnLaunchTemplate,
   LaunchTemplateHttpTokens,
   InstanceType,
+  InstanceClass,
+  InstanceSize,
+  EbsDeviceVolumeType,
 } from "aws-cdk-lib/aws-ec2";
 
 import {
@@ -26,7 +29,7 @@ export class NodeGroups extends Construct {
             {
               deviceName: "/dev/xvda",
               ebs: {
-                volumeType: "gp3",
+                volumeType: EbsDeviceVolumeType.GENERAL_PURPOSE_SSD_GP3,
                 volumeSize: 30,
               },
             },
@@ -75,8 +78,8 @@ export class NodeGroups extends Construct {
     cluster.addNodegroupCapacity("mng-1", {
       amiType: NodegroupAmiType.AL2023_X86_64_STANDARD,
       instanceTypes: [
-        new InstanceType("t3a.medium"),
-        new InstanceType("t3.medium"),
+        InstanceType.of(InstanceClass.T3A, InstanceSize.MEDIUM),
+        InstanceType.of(InstanceClass.T3, InstanceSize.MEDIUM),
       ],
       desiredSize: 2,
       minSize: 2,
