@@ -8,7 +8,8 @@ import {
 } from "aws-cdk-lib/aws-eks";
 
 export const clusterName = "cdk-eks-cluster";
-export const clusterVersion = KubernetesVersion.V1_32;
+
+export const clusterVersion = KubernetesVersion.V1_33;
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
 export const authenticationMode = AuthenticationMode.API_AND_CONFIG_MAP;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;
@@ -26,7 +27,7 @@ export const resolveConflicts = "OVERWRITE";
 
 // Chart version definitions
 
-export const chartVersionAwsLBC = "1.13.2";
+export const chartVersionAwsLBC = "1.13.3";
 
 // Managed Addons version definitions
 
@@ -40,21 +41,31 @@ export const addonMetricsServer = "metrics-server";
 
 export const defaultAddonVersions = new Map([
   [addonKubeProxy, undefined],
-  [addonCoreDns, "v1.11.4-eksbuild.14"],
-  [addonVpcCni, "v1.19.5-eksbuild.3"],
+  [addonCoreDns, undefined],
+  [addonVpcCni, "v1.19.6-eksbuild.1"],
   [addonPodIdentityAgent, "v1.3.7-eksbuild.2"],
   [addonEbsCsiDriver, "v1.44.0-eksbuild.1"],
   [addonCloudWatchObservability, "v4.1.0-eksbuild.1"],
-  [addonMetricsServer, "v0.7.2-eksbuild.3"],
+  [addonMetricsServer, "v0.7.2-eksbuild.4"],
 ]);
 
 export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonKubeProxy,
     new Map([
-      [KubernetesVersion.V1_32, "v1.32.3-eksbuild.7"],
-      [KubernetesVersion.V1_31, "v1.31.7-eksbuild.7"],
-      [KubernetesVersion.V1_30, "v1.30.11-eksbuild.5"],
+      [KubernetesVersion.V1_33, "v1.33.0-eksbuild.2"],
+      [KubernetesVersion.V1_32, "v1.32.5-eksbuild.2"],
+      [KubernetesVersion.V1_31, "v1.31.9-eksbuild.2"],
+      [KubernetesVersion.V1_30, "v1.30.13-eksbuild.2"],
+    ]),
+  ],
+  [
+    addonCoreDns,
+    new Map([
+      [KubernetesVersion.V1_33, "v1.12.1-eksbuild.2"],
+      [KubernetesVersion.V1_32, "v1.11.4-eksbuild.14"],
+      [KubernetesVersion.V1_31, "v1.11.4-eksbuild.14"],
+      [KubernetesVersion.V1_30, "v1.11.4-eksbuild.14"],
     ]),
   ],
 ]);
