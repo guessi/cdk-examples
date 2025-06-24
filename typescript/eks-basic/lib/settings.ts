@@ -1,20 +1,20 @@
 import { SubnetType } from "aws-cdk-lib/aws-ec2";
 import {
-  AuthenticationMode,
   KubernetesVersion,
   EndpointAccess,
   IpFamily,
   ClusterLoggingTypes,
-} from "aws-cdk-lib/aws-eks";
+  DefaultCapacityType,
+} from "@aws-cdk/aws-eks-v2-alpha";
 
 export const clusterName = "cdk-eks-cluster";
 
-export const clusterVersion = KubernetesVersion.V1_33;
+export const clusterVersion = KubernetesVersion.of("1.33");
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
-export const authenticationMode = AuthenticationMode.API_AND_CONFIG_MAP;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;
 export const ipFamily = IpFamily.IP_V4;
 export const serviceIpv4Cidr = "172.20.0.0/16";
+export const defaultCapacityType = DefaultCapacityType.NODEGROUP;
 export const defaultCapacity = 0;
 export const clusterLogging = [
   ClusterLoggingTypes.API,
@@ -23,7 +23,6 @@ export const clusterLogging = [
   ClusterLoggingTypes.AUDIT,
   ClusterLoggingTypes.CONTROLLER_MANAGER,
 ];
-export const resolveConflicts = "OVERWRITE";
 
 // Chart version definitions
 
@@ -53,7 +52,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonKubeProxy,
     new Map([
-      [KubernetesVersion.V1_33, "v1.33.0-eksbuild.2"],
+      [KubernetesVersion.of("1.33"), "v1.33.0-eksbuild.2"],
       [KubernetesVersion.V1_32, "v1.32.5-eksbuild.2"],
       [KubernetesVersion.V1_31, "v1.31.9-eksbuild.2"],
       [KubernetesVersion.V1_30, "v1.30.13-eksbuild.2"],
@@ -62,7 +61,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonCoreDns,
     new Map([
-      [KubernetesVersion.V1_33, "v1.12.1-eksbuild.2"],
+      [KubernetesVersion.of("1.33"), "v1.12.1-eksbuild.2"],
       [KubernetesVersion.V1_32, "v1.11.4-eksbuild.14"],
       [KubernetesVersion.V1_31, "v1.11.4-eksbuild.14"],
       [KubernetesVersion.V1_30, "v1.11.4-eksbuild.14"],

@@ -1,6 +1,6 @@
 import { Duration } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { Cluster, HelmChart } from "aws-cdk-lib/aws-eks";
+import { Cluster, HelmChart } from "@aws-cdk/aws-eks-v2-alpha";
 import * as settings from "./settings";
 
 export class Charts extends Construct {

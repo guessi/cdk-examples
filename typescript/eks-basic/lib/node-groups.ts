@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { Cluster, NodegroupAmiType, CapacityType } from "aws-cdk-lib/aws-eks";
+import { Cluster, NodegroupAmiType, CapacityType } from "@aws-cdk/aws-eks-v2-alpha";
 import {
   CfnLaunchTemplate,
   LaunchTemplateHttpTokens,
@@ -59,6 +59,9 @@ export class NodeGroups extends Construct {
       "AmazonEC2ContainerRegistryPullOnly",
       "AmazonEKSWorkerNodePolicy",
       "AmazonEKS_CNI_Policy",
+
+      // (Optional) Only required if you are using "Amazon EBS CSI Driver"
+      "service-role/AmazonEBSCSIDriverPolicy",
 
       // (Optional) Only required if you need "EC2 Instance Connect"
       "AmazonSSMManagedInstanceCore",

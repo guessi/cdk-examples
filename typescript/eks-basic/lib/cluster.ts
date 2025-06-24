@@ -4,9 +4,9 @@ import {
   AccessPolicy,
   AccessScopeType,
   Cluster,
-} from "aws-cdk-lib/aws-eks";
+} from "@aws-cdk/aws-eks-v2-alpha";
 import { User, Role } from "aws-cdk-lib/aws-iam";
-import { KubectlV33Layer as kubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v33";
+import { KubectlV33Layer as KubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v33";
 import { NodeGroups } from "./node-groups";
 import { Charts } from "./charts";
 import { ManagedAddons } from "./managed-addons";
@@ -20,11 +20,13 @@ export class EksCluster extends Stack {
       clusterName: settings.clusterName,
       version: settings.clusterVersion,
       endpointAccess: settings.endpointAccess,
-      kubectlLayer: new kubectlLayer(this, "kubectl"),
-      authenticationMode: settings.authenticationMode,
+      kubectlProviderOptions: {
+        kubectlLayer: new KubectlLayer(this, "kubectl"),
+      },
       vpcSubnets: [{ subnetType: settings.subnetType }],
       ipFamily: settings.ipFamily,
       serviceIpv4Cidr: settings.serviceIpv4Cidr,
+      defaultCapacityType: settings.defaultCapacityType,
       defaultCapacity: settings.defaultCapacity,
       clusterLogging: settings.clusterLogging,
     });
