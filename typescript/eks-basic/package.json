@@ -20,6 +20,7 @@
     "typescript": "~5.8.3"
   },
   "dependencies": {
+    "@aws-cdk/aws-eks-v2-alpha": "^2.202.0-alpha.0",
     "@aws-cdk/lambda-layer-kubectl-v33": "^2.0.0",
     "aws-cdk-lib": "^2.202.0",
     "constructs": "^10.4.2",

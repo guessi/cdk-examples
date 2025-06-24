@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { Cluster, NodegroupAmiType, CapacityType } from "aws-cdk-lib/aws-eks";
+import { Cluster, NodegroupAmiType, CapacityType } from "@aws-cdk/aws-eks-v2-alpha";
 import {
   CfnLaunchTemplate,
   LaunchTemplateHttpTokens,
