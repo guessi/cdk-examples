@@ -3,7 +3,6 @@ import { Construct } from "constructs";
 import {
   AccessPolicy,
   AccessScopeType,
-  AuthenticationMode,
   Cluster,
 } from "aws-cdk-lib/aws-eks";
 import { User, Role } from "aws-cdk-lib/aws-iam";
