@@ -53,9 +53,6 @@ export class NodeGroups extends Construct {
       "AmazonEKSWorkerNodePolicy",
       "AmazonEKS_CNI_Policy",
 
-      // (Optional) Only required if you are using "Amazon EBS CSI Driver"
-      "service-role/AmazonEBSCSIDriverPolicy",
-
       // (Optional) Only required if you need "EC2 Instance Connect"
       "AmazonSSMManagedInstanceCore",
 

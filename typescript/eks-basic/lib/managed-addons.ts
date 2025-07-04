@@ -1,4 +1,6 @@
 import { Construct } from "constructs";
+import { aws_eks } from "aws-cdk-lib";
+import { aws_iam } from "aws-cdk-lib";
 import { Cluster, Addon } from "@aws-cdk/aws-eks-v2-alpha";
 import {
   addonVersions,
@@ -65,6 +67,34 @@ export class ManagedAddons extends Construct {
       addonName: addonMetricsServer,
       addonVersion: this.getAddonVersion(addonMetricsServer),
     });
+
+    const roleEbsCsiDriver = new aws_iam.Role(this, "Role", {
+      assumedBy: new aws_iam.ServicePrincipal("pods.eks.amazonaws.com"),
+      managedPolicies: [
+        aws_iam.ManagedPolicy.fromAwsManagedPolicyName(
+          "service-role/AmazonEBSCSIDriverPolicy"
+        ),
+      ],
+    });
+
+    // Workaround for missing `sts:TagSession`
+    roleEbsCsiDriver.assumeRolePolicy?.addStatements(
+      new aws_iam.PolicyStatement({
+        actions: ["sts:AssumeRole", "sts:TagSession"],
+        principals: [new aws_iam.ServicePrincipal("pods.eks.amazonaws.com")],
+      })
+    );
+
+    new aws_eks.CfnPodIdentityAssociation(
+      this,
+      "CfnPodIdentityAssociationEbsCsiDriver",
+      {
+        clusterName: cluster.clusterName,
+        namespace: "kube-system",
+        roleArn: roleEbsCsiDriver.roleArn,
+        serviceAccount: "ebs-csi-controller-sa",
+      }
+    );
   }
 
   private getAddonVersion(addonName: string) {
