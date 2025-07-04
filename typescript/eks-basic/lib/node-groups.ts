@@ -1,12 +1,9 @@
 import { Construct } from "constructs";
 import { Cluster, NodegroupAmiType, CapacityType } from "@aws-cdk/aws-eks-v2-alpha";
 import {
-  CfnLaunchTemplate,
-  LaunchTemplateHttpTokens,
   InstanceType,
   InstanceClass,
   InstanceSize,
-  EbsDeviceVolumeType,
 } from "aws-cdk-lib/aws-ec2";
 
 import {
@@ -20,7 +17,6 @@ export class NodeGroups extends Construct {
   constructor(scope: Construct, id: string, cluster: Cluster) {
     super(scope, id);
 
-    const customizedLaunchTemplate = this.customizedLaunchTemplate();
     const nodeGroupRole = this.nodeGroupRole();
 
     // HINT: required cdk v2.135.0 or higher version to support instanceTypes assignment when working with AL2023
@@ -35,12 +31,9 @@ export class NodeGroups extends Construct {
       desiredSize: 2,
       minSize: 2,
       maxSize: 5,
+      diskSize: 30,
       capacityType: CapacityType.SPOT,
       nodeRole: nodeGroupRole,
-      launchTemplateSpec: {
-        id: customizedLaunchTemplate.ref,
-        version: customizedLaunchTemplate.attrLatestVersionNumber,
-      },
       tags: {
         "managed-by": "cdk",
       },
@@ -80,29 +73,5 @@ export class NodeGroups extends Construct {
       );
     });
     return nodeGroupRole;
-  }
-
-  private customizedLaunchTemplate() {
-    return new CfnLaunchTemplate(
-      this,
-      `{nodeGroupName}_LaunchTemplate`,
-      {
-        launchTemplateData: {
-          blockDeviceMappings: [
-            {
-              deviceName: "/dev/xvda",
-              ebs: {
-                volumeType: EbsDeviceVolumeType.GENERAL_PURPOSE_SSD_GP3,
-                volumeSize: 30,
-              },
-            },
-          ],
-          metadataOptions: {
-            httpTokens: LaunchTemplateHttpTokens.REQUIRED,
-            httpPutResponseHopLimit: 2,
-          },
-        },
-      }
-    );
   }
 }
