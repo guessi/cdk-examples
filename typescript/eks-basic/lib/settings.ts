@@ -42,7 +42,7 @@ export const defaultAddonVersions = new Map([
   [addonKubeProxy, undefined],
   [addonCoreDns, undefined],
   [addonVpcCni, "v1.19.6-eksbuild.1"],
-  [addonPodIdentityAgent, "v1.3.7-eksbuild.2"],
+  [addonPodIdentityAgent, "v1.3.8-eksbuild.2"],
   [addonEbsCsiDriver, "v1.45.0-eksbuild.2"],
   [addonCloudWatchObservability, "v4.2.0-eksbuild.1"],
   [addonMetricsServer, "v0.7.2-eksbuild.4"],
@@ -61,7 +61,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonCoreDns,
     new Map([
-      [KubernetesVersion.of("1.33"), "v1.12.1-eksbuild.2"],
+      [KubernetesVersion.of("1.33"), "v1.12.2-eksbuild.4"],
       [KubernetesVersion.V1_32, "v1.11.4-eksbuild.14"],
       [KubernetesVersion.V1_31, "v1.11.4-eksbuild.14"],
       [KubernetesVersion.V1_30, "v1.11.4-eksbuild.14"],
