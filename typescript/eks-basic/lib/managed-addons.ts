@@ -38,6 +38,12 @@ export class ManagedAddons extends Construct {
       cluster,
       addonName: addonVpcCni,
       addonVersion: this.getAddonVersion(addonVpcCni),
+      configurationValues: {
+        // Disable: aws-eks-nodeagent
+        nodeAgent: {
+          enabled: false,
+        },
+      },
     });
 
     // eks-pod-identity-agent (Only Amazon EKS 1.24+ are supported)
@@ -52,6 +58,18 @@ export class ManagedAddons extends Construct {
       cluster,
       addonName: addonEbsCsiDriver,
       addonVersion: this.getAddonVersion(addonEbsCsiDriver),
+      configurationValues: {
+        // Disable: ebs-csi-node-windows
+        node: {
+          enableWindows: false,
+        },
+        // Disable: csi-snapshotter
+        sidecars: {
+          snapshotter: {
+            forceEnable: false,
+          },
+        },
+      },
     });
 
     // amazon-cloudwatch-observability
