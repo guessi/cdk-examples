@@ -1,0 +1,28 @@
+{
+  "name": "eks-basic",
+  "version": "0.1.0",
+  "bin": {
+    "eks-basic": "bin/eks-basic.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.3",
+    "aws-cdk": "^2.1127.0",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
+    "typescript": "~6.0.3"
+  },
+  "dependencies": {
+    "@aws-cdk/lambda-layer-kubectl-v35": "^2.2.2",
+    "aws-cdk-lib": "^2.259.0",
+    "constructs": "^10.6.0",
+    "source-map-support": "^0.5.21"
+  }
+}
