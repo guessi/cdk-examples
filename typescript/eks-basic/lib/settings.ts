@@ -43,9 +43,9 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
     addonKubeProxy,
     new Map([
       [KubernetesVersion.of("1.33"), "v1.33.0-eksbuild.2"],
-      [KubernetesVersion.V1_32, "v1.32.5-eksbuild.2"],
-      [KubernetesVersion.V1_31, "v1.31.9-eksbuild.2"],
-      [KubernetesVersion.V1_30, "v1.30.13-eksbuild.2"],
+      [KubernetesVersion.V1_32, "v1.32.6-eksbuild.2"],
+      [KubernetesVersion.V1_31, "v1.31.10-eksbuild.2"],
+      [KubernetesVersion.V1_30, "v1.30.14-eksbuild.2"],
     ]),
   ],
   [
@@ -60,10 +60,10 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonVpcCni,
     new Map([
-      [KubernetesVersion.of("1.33"), "v1.19.6-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v1.19.6-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v1.19.6-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v1.19.6-eksbuild.1"],
+      [KubernetesVersion.of("1.33"), "v1.20.0-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v1.20.0-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v1.20.0-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v1.20.0-eksbuild.1"],
     ]),
   ],
   [
@@ -78,19 +78,19 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonEbsCsiDriver,
     new Map([
-      [KubernetesVersion.of("1.33"), "v1.45.0-eksbuild.2"],
-      [KubernetesVersion.V1_32, "v1.45.0-eksbuild.2"],
-      [KubernetesVersion.V1_31, "v1.45.0-eksbuild.2"],
-      [KubernetesVersion.V1_30, "v1.45.0-eksbuild.2"],
+      [KubernetesVersion.of("1.33"), "v1.46.0-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v1.46.0-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v1.46.0-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v1.46.0-eksbuild.1"],
     ]),
   ],
   [
     addonCloudWatchObservability,
     new Map([
-      [KubernetesVersion.of("1.33"), "v4.2.0-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v4.2.0-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v4.2.0-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v4.2.0-eksbuild.1"],
+      [KubernetesVersion.of("1.33"), "v4.2.1-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v4.2.1-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v4.2.1-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v4.2.1-eksbuild.1"],
     ]),
   ],
   [
