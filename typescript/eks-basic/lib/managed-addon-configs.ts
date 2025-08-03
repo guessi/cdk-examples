@@ -75,6 +75,12 @@ export const addonConfigs: AddonConfig[] = [
     name: addonEbsCsiDriver,
     description: "Amazon EBS CSI driver",
     configurationValues: {
+      // Enable: volumemodifier
+      controller: {
+        volumeModificationFeature: {
+          enabled: true,
+        },
+      },
       // Disable: ebs-csi-node-windows
       node: {
         enableWindows: false,
