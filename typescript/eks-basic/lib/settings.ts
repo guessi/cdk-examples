@@ -26,7 +26,7 @@ export const clusterLogging = [
 
 // Chart version definitions
 
-export const chartVersionAwsLBC = "1.14.0";
+export const chartVersionAwsLBC = "1.14.1";
 
 // Managed Addons version definitions
 
@@ -69,28 +69,28 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonPodIdentityAgent,
     new Map([
-      [KubernetesVersion.V1_33, "v1.3.9-eksbuild.3"],
-      [KubernetesVersion.V1_32, "v1.3.9-eksbuild.3"],
-      [KubernetesVersion.V1_31, "v1.3.9-eksbuild.3"],
-      [KubernetesVersion.V1_30, "v1.3.9-eksbuild.3"],
+      [KubernetesVersion.V1_33, "v1.3.9-eksbuild.5"],
+      [KubernetesVersion.V1_32, "v1.3.9-eksbuild.5"],
+      [KubernetesVersion.V1_31, "v1.3.9-eksbuild.5"],
+      [KubernetesVersion.V1_30, "v1.3.9-eksbuild.5"],
     ]),
   ],
   [
     addonEbsCsiDriver,
     new Map([
-      [KubernetesVersion.V1_33, "v1.51.0-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v1.51.0-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v1.51.0-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v1.51.0-eksbuild.1"],
+      [KubernetesVersion.V1_33, "v1.51.1-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v1.51.1-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v1.51.1-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v1.51.1-eksbuild.1"],
     ]),
   ],
   [
     addonCloudWatchObservability,
     new Map([
-      [KubernetesVersion.V1_33, "v4.5.0-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v4.5.0-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v4.5.0-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v4.5.0-eksbuild.1"],
+      [KubernetesVersion.V1_33, "v4.6.0-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v4.6.0-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v4.6.0-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v4.6.0-eksbuild.1"],
     ]),
   ],
   [
