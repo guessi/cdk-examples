@@ -14,6 +14,7 @@ ADDON_NAMES=(
 )
 
 EKS_VERSIONS=(
+  "1.34"
   "1.33"
   "1.32"
   "1.31"

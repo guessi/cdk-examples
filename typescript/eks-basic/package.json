@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@aws-cdk/aws-eks-v2-alpha": "^2.225.0-alpha.0",
-    "@aws-cdk/lambda-layer-kubectl-v33": "^2.0.0",
+    "@aws-cdk/lambda-layer-kubectl-v34": "^2.0.0",
     "aws-cdk-lib": "^2.225.0",
     "constructs": "^10.4.3",
     "source-map-support": "^0.5.21"

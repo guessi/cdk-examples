@@ -1,7 +1,7 @@
 from aws_cdk import Stack
 from aws_cdk import aws_ec2 as ec2
 from aws_cdk import aws_eks_v2_alpha as eks
-from aws_cdk.lambda_layer_kubectl_v33 import KubectlV33Layer as KubectlLayer
+from aws_cdk.lambda_layer_kubectl_v34 import KubectlV34Layer as KubectlLayer
 
 from constructs import Construct
 
@@ -11,7 +11,7 @@ class EksBasicStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        eks_version = eks.KubernetesVersion.of("1.33")
+        eks_version = eks.KubernetesVersion.of("1.34")
         eks_cluster_name = "EksBasicStack"
 
         cluster_logging_setup = [

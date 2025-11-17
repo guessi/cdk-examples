@@ -9,7 +9,7 @@ import {
 
 export const clusterName = "cdk-eks-cluster";
 
-export const clusterVersion = KubernetesVersion.V1_33;
+export const clusterVersion = KubernetesVersion.V1_34;
 export const endpointAccess = EndpointAccess.PUBLIC_AND_PRIVATE;
 export const subnetType = SubnetType.PRIVATE_WITH_EGRESS;
 export const ipFamily = IpFamily.IP_V4;
@@ -42,6 +42,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonKubeProxy,
     new Map([
+      [KubernetesVersion.V1_34, "v1.34.0-eksbuild.4"],
       [KubernetesVersion.V1_33, "v1.33.3-eksbuild.10"],
       [KubernetesVersion.V1_32, "v1.32.6-eksbuild.12"],
       [KubernetesVersion.V1_31, "v1.31.10-eksbuild.12"],
@@ -51,6 +52,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonCoreDns,
     new Map([
+      [KubernetesVersion.V1_34, "v1.12.4-eksbuild.1"],
       [KubernetesVersion.V1_33, "v1.12.4-eksbuild.1"],
       [KubernetesVersion.V1_32, "v1.11.4-eksbuild.24"],
       [KubernetesVersion.V1_31, "v1.11.4-eksbuild.24"],
@@ -60,6 +62,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonVpcCni,
     new Map([
+      [KubernetesVersion.V1_34, "v1.20.4-eksbuild.1"],
       [KubernetesVersion.V1_33, "v1.20.4-eksbuild.1"],
       [KubernetesVersion.V1_32, "v1.20.4-eksbuild.1"],
       [KubernetesVersion.V1_31, "v1.20.4-eksbuild.1"],
@@ -69,6 +72,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonPodIdentityAgent,
     new Map([
+      [KubernetesVersion.V1_34, "v1.3.9-eksbuild.5"],
       [KubernetesVersion.V1_33, "v1.3.9-eksbuild.5"],
       [KubernetesVersion.V1_32, "v1.3.9-eksbuild.5"],
       [KubernetesVersion.V1_31, "v1.3.9-eksbuild.5"],
@@ -78,6 +82,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonEbsCsiDriver,
     new Map([
+      [KubernetesVersion.V1_34, "v1.52.1-eksbuild.1"],
       [KubernetesVersion.V1_33, "v1.52.1-eksbuild.1"],
       [KubernetesVersion.V1_32, "v1.52.1-eksbuild.1"],
       [KubernetesVersion.V1_31, "v1.52.1-eksbuild.1"],
@@ -87,6 +92,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonCloudWatchObservability,
     new Map([
+      [KubernetesVersion.V1_34, "v4.7.0-eksbuild.1"],
       [KubernetesVersion.V1_33, "v4.7.0-eksbuild.1"],
       [KubernetesVersion.V1_32, "v4.7.0-eksbuild.1"],
       [KubernetesVersion.V1_31, "v4.7.0-eksbuild.1"],
@@ -96,6 +102,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonMetricsServer,
     new Map([
+      [KubernetesVersion.V1_34, "v0.8.0-eksbuild.3"],
       [KubernetesVersion.V1_33, "v0.8.0-eksbuild.3"],
       [KubernetesVersion.V1_32, "v0.8.0-eksbuild.3"],
       [KubernetesVersion.V1_31, "v0.8.0-eksbuild.3"],
