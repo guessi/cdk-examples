@@ -26,7 +26,7 @@ export const clusterLogging = [
 
 // Chart version definitions
 
-export const chartVersionAwsLBC = "1.15.0";
+export const chartVersionAwsLBC = "1.16.0";
 
 // Managed Addons version definitions
 
@@ -62,21 +62,21 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonVpcCni,
     new Map([
-      [KubernetesVersion.V1_34, "v1.20.4-eksbuild.1"],
-      [KubernetesVersion.V1_33, "v1.20.4-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v1.20.4-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v1.20.4-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v1.20.4-eksbuild.1"],
+      [KubernetesVersion.V1_34, "v1.20.5-eksbuild.1"],
+      [KubernetesVersion.V1_33, "v1.20.5-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v1.20.5-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v1.20.5-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v1.20.5-eksbuild.1"],
     ]),
   ],
   [
     addonPodIdentityAgent,
     new Map([
-      [KubernetesVersion.V1_34, "v1.3.9-eksbuild.5"],
-      [KubernetesVersion.V1_33, "v1.3.9-eksbuild.5"],
-      [KubernetesVersion.V1_32, "v1.3.9-eksbuild.5"],
-      [KubernetesVersion.V1_31, "v1.3.9-eksbuild.5"],
-      [KubernetesVersion.V1_30, "v1.3.9-eksbuild.5"],
+      [KubernetesVersion.V1_34, "v1.3.10-eksbuild.1"],
+      [KubernetesVersion.V1_33, "v1.3.10-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v1.3.10-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v1.3.10-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v1.3.10-eksbuild.1"],
     ]),
   ],
   [
@@ -102,11 +102,11 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonMetricsServer,
     new Map([
-      [KubernetesVersion.V1_34, "v0.8.0-eksbuild.3"],
-      [KubernetesVersion.V1_33, "v0.8.0-eksbuild.3"],
-      [KubernetesVersion.V1_32, "v0.8.0-eksbuild.3"],
-      [KubernetesVersion.V1_31, "v0.8.0-eksbuild.3"],
-      [KubernetesVersion.V1_30, "v0.8.0-eksbuild.3"],
+      [KubernetesVersion.V1_34, "v0.8.0-eksbuild.5"],
+      [KubernetesVersion.V1_33, "v0.8.0-eksbuild.5"],
+      [KubernetesVersion.V1_32, "v0.8.0-eksbuild.5"],
+      [KubernetesVersion.V1_31, "v0.8.0-eksbuild.5"],
+      [KubernetesVersion.V1_30, "v0.8.0-eksbuild.5"],
     ]),
   ],
 ]);
