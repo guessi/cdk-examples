@@ -92,11 +92,11 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
   [
     addonCloudWatchObservability,
     new Map([
-      [KubernetesVersion.V1_34, "v4.7.0-eksbuild.1"],
-      [KubernetesVersion.V1_33, "v4.7.0-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v4.7.0-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v4.7.0-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v4.7.0-eksbuild.1"],
+      [KubernetesVersion.V1_34, "v4.8.0-eksbuild.1"],
+      [KubernetesVersion.V1_33, "v4.8.0-eksbuild.1"],
+      [KubernetesVersion.V1_32, "v4.8.0-eksbuild.1"],
+      [KubernetesVersion.V1_31, "v4.8.0-eksbuild.1"],
+      [KubernetesVersion.V1_30, "v4.8.0-eksbuild.1"],
     ]),
   ],
   [
@@ -106,7 +106,7 @@ export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
       [KubernetesVersion.V1_33, "v0.8.0-eksbuild.6"],
       [KubernetesVersion.V1_32, "v0.8.0-eksbuild.6"],
       [KubernetesVersion.V1_31, "v0.8.0-eksbuild.6"],
-      [KubernetesVersion.V1_30, "v0.8.0-eksbuild.6"],
+      [KubernetesVersion.V1_30, "v0.8.0-eksbuild.3"],
     ]),
   ],
 ]);
