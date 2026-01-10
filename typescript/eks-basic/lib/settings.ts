@@ -25,7 +25,7 @@ export const clusterLogging = [
 ];
 
 // Chart version definitions
-export const chartVersionAwsLBC = "1.17.0";
+export const chartVersionAwsLBC = "1.17.1";
 
 // Managed Addons
 export const addonKubeProxy = "kube-proxy";
