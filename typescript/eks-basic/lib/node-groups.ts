@@ -25,8 +25,8 @@ export class NodeGroups extends Construct {
     cluster.addNodegroupCapacity("mng-1", {
       amiType: NodegroupAmiType.AL2023_X86_64_STANDARD,
       instanceTypes: [
-        InstanceType.of(InstanceClass.T3A, InstanceSize.MEDIUM),
-        InstanceType.of(InstanceClass.T3, InstanceSize.MEDIUM),
+        InstanceType.of(InstanceClass.T3A, InstanceSize.SMALL),
+        InstanceType.of(InstanceClass.T3, InstanceSize.SMALL),
       ],
       desiredSize: 2,
       minSize: 2,
