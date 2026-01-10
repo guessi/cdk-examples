@@ -146,13 +146,15 @@ export class ManagedAddons extends Construct {
    * Gets the addon version from version mappings with improved error handling
    */
   private getAddonVersion(addonName: string): string | undefined {
-    const addonMap = addonVersions?.get(addonName);
-    if (!addonMap) {
+    const addonConfig = addonVersions?.get(addonName);
+    if (!addonConfig) {
       console.warn(
         `Warning: No version mappings found for addon: ${addonName}`
       );
       return undefined;
     }
+
+    const addonMap = addonConfig.versions;
 
     // Try exact object match first
     let version = addonMap.get(clusterVersion);

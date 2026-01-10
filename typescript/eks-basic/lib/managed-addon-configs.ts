@@ -6,6 +6,7 @@ import {
   addonEbsCsiDriver,
   addonCloudWatchObservability,
   addonMetricsServer,
+  addonVersions,
 } from "./settings";
 
 /**
@@ -37,20 +38,20 @@ export interface PodIdentityConfig {
 }
 
 /**
- * All EKS addon configurations
+ * Addon registry mapping addon names to their configurations
  */
-export const addonConfigs: AddonConfig[] = [
-  {
+const addonRegistry: Record<string, AddonConfig> = {
+  [addonKubeProxy]: {
     id: "KubeProxy",
     name: addonKubeProxy,
     description: "Kubernetes network proxy",
   },
-  {
+  [addonCoreDns]: {
     id: "CoreDns",
     name: addonCoreDns,
     description: "DNS server for Kubernetes clusters",
   },
-  {
+  [addonVpcCni]: {
     id: "VpcCni",
     name: addonVpcCni,
     description: "Amazon VPC CNI plugin for Kubernetes",
@@ -65,12 +66,12 @@ export const addonConfigs: AddonConfig[] = [
       serviceAccount: "aws-node",
     },
   },
-  {
+  [addonPodIdentityAgent]: {
     id: "EksPodIdentityAgent",
     name: addonPodIdentityAgent,
     description: "EKS Pod Identity Agent (requires EKS 1.24+)",
   },
-  {
+  [addonEbsCsiDriver]: {
     id: "EbsCsiDriver",
     name: addonEbsCsiDriver,
     description: "Amazon EBS CSI driver",
@@ -97,14 +98,21 @@ export const addonConfigs: AddonConfig[] = [
       serviceAccount: "ebs-csi-controller-sa",
     },
   },
-  {
+  [addonCloudWatchObservability]: {
     id: "AmazonCloudwatchObservability",
     name: addonCloudWatchObservability,
     description: "Amazon CloudWatch Observability addon",
   },
-  {
+  [addonMetricsServer]: {
     id: "MetricsServer",
     name: addonMetricsServer,
     description: "Kubernetes Metrics Server",
   },
-];
+};
+
+/**
+ * Get enabled addon configurations based on version settings
+ */
+export const addonConfigs: AddonConfig[] = Array.from(addonVersions.entries())
+  .filter(([_, config]) => config.enabled)
+  .map(([name]) => addonRegistry[name]);

@@ -25,11 +25,9 @@ export const clusterLogging = [
 ];
 
 // Chart version definitions
-
 export const chartVersionAwsLBC = "1.17.0";
 
-// Managed Addons version definitions
-
+// Managed Addons
 export const addonKubeProxy = "kube-proxy";
 export const addonCoreDns = "coredns";
 export const addonVpcCni = "vpc-cni";
@@ -38,75 +36,102 @@ export const addonEbsCsiDriver = "aws-ebs-csi-driver";
 export const addonCloudWatchObservability = "amazon-cloudwatch-observability";
 export const addonMetricsServer = "metrics-server";
 
-export const addonVersions = new Map<string, Map<KubernetesVersion, string>>([
+// Addon Configuration with versions and enabled status
+export interface AddonConfig {
+  enabled: boolean;
+  versions: Map<KubernetesVersion, string>;
+}
+
+export const addonVersions = new Map<string, AddonConfig>([
   [
     addonKubeProxy,
-    new Map([
-      [KubernetesVersion.V1_34, "v1.34.1-eksbuild.2"],
-      [KubernetesVersion.V1_33, "v1.33.5-eksbuild.2"],
-      [KubernetesVersion.V1_32, "v1.32.9-eksbuild.2"],
-      [KubernetesVersion.V1_31, "v1.31.13-eksbuild.2"],
-      [KubernetesVersion.V1_30, "v1.30.14-eksbuild.18"],
-    ]),
+    {
+      enabled: true,
+      versions: new Map([
+        [KubernetesVersion.V1_34, "v1.34.1-eksbuild.2"],
+        [KubernetesVersion.V1_33, "v1.33.5-eksbuild.2"],
+        [KubernetesVersion.V1_32, "v1.32.9-eksbuild.2"],
+        [KubernetesVersion.V1_31, "v1.31.13-eksbuild.2"],
+        [KubernetesVersion.V1_30, "v1.30.14-eksbuild.18"],
+      ]),
+    },
   ],
   [
     addonCoreDns,
-    new Map([
-      [KubernetesVersion.V1_34, "v1.12.4-eksbuild.1"],
-      [KubernetesVersion.V1_33, "v1.12.4-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v1.11.4-eksbuild.24"],
-      [KubernetesVersion.V1_31, "v1.11.4-eksbuild.24"],
-      [KubernetesVersion.V1_30, "v1.11.4-eksbuild.24"],
-    ]),
+    {
+      enabled: true,
+      versions: new Map([
+        [KubernetesVersion.V1_34, "v1.12.4-eksbuild.1"],
+        [KubernetesVersion.V1_33, "v1.12.4-eksbuild.1"],
+        [KubernetesVersion.V1_32, "v1.11.4-eksbuild.24"],
+        [KubernetesVersion.V1_31, "v1.11.4-eksbuild.24"],
+        [KubernetesVersion.V1_30, "v1.11.4-eksbuild.24"],
+      ]),
+    },
   ],
   [
     addonVpcCni,
-    new Map([
-      [KubernetesVersion.V1_34, "v1.21.1-eksbuild.1"],
-      [KubernetesVersion.V1_33, "v1.21.1-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v1.21.1-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v1.21.1-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v1.21.1-eksbuild.1"],
-    ]),
+    {
+      enabled: true,
+      versions: new Map([
+        [KubernetesVersion.V1_34, "v1.21.1-eksbuild.1"],
+        [KubernetesVersion.V1_33, "v1.21.1-eksbuild.1"],
+        [KubernetesVersion.V1_32, "v1.21.1-eksbuild.1"],
+        [KubernetesVersion.V1_31, "v1.21.1-eksbuild.1"],
+        [KubernetesVersion.V1_30, "v1.21.1-eksbuild.1"],
+      ]),
+    },
   ],
   [
     addonPodIdentityAgent,
-    new Map([
-      [KubernetesVersion.V1_34, "v1.3.10-eksbuild.2"],
-      [KubernetesVersion.V1_33, "v1.3.10-eksbuild.2"],
-      [KubernetesVersion.V1_32, "v1.3.10-eksbuild.2"],
-      [KubernetesVersion.V1_31, "v1.3.10-eksbuild.2"],
-      [KubernetesVersion.V1_30, "v1.3.10-eksbuild.2"],
-    ]),
+    {
+      enabled: true,
+      versions: new Map([
+        [KubernetesVersion.V1_34, "v1.3.10-eksbuild.2"],
+        [KubernetesVersion.V1_33, "v1.3.10-eksbuild.2"],
+        [KubernetesVersion.V1_32, "v1.3.10-eksbuild.2"],
+        [KubernetesVersion.V1_31, "v1.3.10-eksbuild.2"],
+        [KubernetesVersion.V1_30, "v1.3.10-eksbuild.2"],
+      ]),
+    },
   ],
   [
     addonEbsCsiDriver,
-    new Map([
-      [KubernetesVersion.V1_34, "v1.54.0-eksbuild.1"],
-      [KubernetesVersion.V1_33, "v1.54.0-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v1.54.0-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v1.54.0-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v1.54.0-eksbuild.1"],
-    ]),
+    {
+      enabled: true,
+      versions: new Map([
+        [KubernetesVersion.V1_34, "v1.54.0-eksbuild.1"],
+        [KubernetesVersion.V1_33, "v1.54.0-eksbuild.1"],
+        [KubernetesVersion.V1_32, "v1.54.0-eksbuild.1"],
+        [KubernetesVersion.V1_31, "v1.54.0-eksbuild.1"],
+        [KubernetesVersion.V1_30, "v1.54.0-eksbuild.1"],
+      ]),
+    },
   ],
   [
     addonCloudWatchObservability,
-    new Map([
-      [KubernetesVersion.V1_34, "v4.8.0-eksbuild.1"],
-      [KubernetesVersion.V1_33, "v4.8.0-eksbuild.1"],
-      [KubernetesVersion.V1_32, "v4.8.0-eksbuild.1"],
-      [KubernetesVersion.V1_31, "v4.8.0-eksbuild.1"],
-      [KubernetesVersion.V1_30, "v4.8.0-eksbuild.1"],
-    ]),
+    {
+      enabled: true,
+      versions: new Map([
+        [KubernetesVersion.V1_34, "v4.8.0-eksbuild.1"],
+        [KubernetesVersion.V1_33, "v4.8.0-eksbuild.1"],
+        [KubernetesVersion.V1_32, "v4.8.0-eksbuild.1"],
+        [KubernetesVersion.V1_31, "v4.8.0-eksbuild.1"],
+        [KubernetesVersion.V1_30, "v4.8.0-eksbuild.1"],
+      ]),
+    },
   ],
   [
     addonMetricsServer,
-    new Map([
-      [KubernetesVersion.V1_34, "v0.8.0-eksbuild.6"],
-      [KubernetesVersion.V1_33, "v0.8.0-eksbuild.6"],
-      [KubernetesVersion.V1_32, "v0.8.0-eksbuild.6"],
-      [KubernetesVersion.V1_31, "v0.8.0-eksbuild.6"],
-      [KubernetesVersion.V1_30, "v0.8.0-eksbuild.3"],
-    ]),
+    {
+      enabled: true,
+      versions: new Map([
+        [KubernetesVersion.V1_34, "v0.8.0-eksbuild.6"],
+        [KubernetesVersion.V1_33, "v0.8.0-eksbuild.6"],
+        [KubernetesVersion.V1_32, "v0.8.0-eksbuild.6"],
+        [KubernetesVersion.V1_31, "v0.8.0-eksbuild.6"],
+        [KubernetesVersion.V1_30, "v0.8.0-eksbuild.3"],
+      ]),
+    },
   ],
 ]);

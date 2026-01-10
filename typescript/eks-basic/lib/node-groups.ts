@@ -1,9 +1,11 @@
 import { Construct } from "constructs";
+
 import {
   Cluster,
   NodegroupAmiType,
   CapacityType,
 } from "@aws-cdk/aws-eks-v2-alpha";
+
 import { InstanceType, InstanceClass, InstanceSize } from "aws-cdk-lib/aws-ec2";
 
 import {
@@ -12,6 +14,8 @@ import {
   Role,
   ServicePrincipal,
 } from "aws-cdk-lib/aws-iam";
+
+import { addonVersions } from "./settings";
 
 export class NodeGroups extends Construct {
   constructor(scope: Construct, id: string, cluster: Cluster) {
@@ -57,11 +61,15 @@ export class NodeGroups extends Construct {
 
       // (Optional) Only required if you are using "SSM"
       "AmazonSSMPatchAssociation",
-
-      // (Optional) Only required if you have "Amazon CloudWatch Observability" setup
-      "CloudWatchAgentServerPolicy",
-      "AWSXrayWriteOnlyAccess",
     ];
+
+    // Add CloudWatch policies only if observability is enabled
+    if (addonVersions.get("amazon-cloudwatch-observability")?.enabled) {
+      policies.push(
+        "CloudWatchAgentServerPolicy",
+        "AWSXrayWriteOnlyAccess",
+      );
+    }
 
     policies.forEach((policy) => {
       nodeGroupRole.addManagedPolicy(
