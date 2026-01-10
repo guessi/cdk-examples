@@ -98,7 +98,7 @@ export const addonVersions = new Map<string, AddonConfig>([
   [
     addonEbsCsiDriver,
     {
-      enabled: true,
+      enabled: false,
       versions: new Map([
         [KubernetesVersion.V1_34, "v1.54.0-eksbuild.1"],
         [KubernetesVersion.V1_33, "v1.54.0-eksbuild.1"],
@@ -111,7 +111,7 @@ export const addonVersions = new Map<string, AddonConfig>([
   [
     addonCloudWatchObservability,
     {
-      enabled: true,
+      enabled: false,
       versions: new Map([
         [KubernetesVersion.V1_34, "v4.8.0-eksbuild.1"],
         [KubernetesVersion.V1_33, "v4.8.0-eksbuild.1"],
@@ -124,7 +124,7 @@ export const addonVersions = new Map<string, AddonConfig>([
   [
     addonMetricsServer,
     {
-      enabled: true,
+      enabled: false,
       versions: new Map([
         [KubernetesVersion.V1_34, "v0.8.0-eksbuild.6"],
         [KubernetesVersion.V1_33, "v0.8.0-eksbuild.6"],
