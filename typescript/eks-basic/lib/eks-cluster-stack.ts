@@ -6,7 +6,7 @@ import {
   Cluster,
 } from "@aws-cdk/aws-eks-v2-alpha";
 import { User, Role } from "aws-cdk-lib/aws-iam";
-import { KubectlV34Layer as KubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v34";
+import { KubectlV35Layer as KubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v35";
 import { NodeGroups } from "./node-groups";
 import { Charts } from "./helm-charts";
 import { ManagedAddons } from "./managed-addons";
