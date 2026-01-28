@@ -13,14 +13,6 @@ ADDON_NAMES=(
   "metrics-server"
 )
 
-EKS_VERSIONS=(
-  "1.34"
-  "1.33"
-  "1.32"
-  "1.31"
-  "1.30"
-)
-
 # Check prerequisites
 check_prerequisites() {
   if ! command -v aws &>/dev/null; then
@@ -66,10 +58,13 @@ main() {
   local temp_results
   temp_results=$(mktemp)
 
+  # Get EKS versions from API
+  EKS_VERSIONS=$(aws eks describe-cluster-versions --query "clusterVersions[*].clusterVersion" --output "text")
+
   # Use parallel processing with background jobs
   local pids=()
   for addon in "${ADDON_NAMES[@]}"; do
-    for k8s_version in "${EKS_VERSIONS[@]}"; do
+    for k8s_version in $EKS_VERSIONS; do
       {
         get_addon_version "$addon" "$k8s_version" >>"$temp_results"
       } &
@@ -82,9 +77,9 @@ main() {
     wait "$pid"
   done
 
-  # Convert EKS_VERSIONS array to JSON for jq
+  # Convert EKS_VERSIONS string to JSON array for jq
   local versions_json
-  versions_json=$(printf '%s\n' "${EKS_VERSIONS[@]}" | jq -R . | jq -s .)
+  versions_json=$(echo "$EKS_VERSIONS" | tr '\t' '\n' | jq -R . | jq -s .)
 
   # Process results with jq to create final JSON structure with ordered versions
   jq -s --argjson versions "$versions_json" '

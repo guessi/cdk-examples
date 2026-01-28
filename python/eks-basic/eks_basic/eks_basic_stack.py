@@ -11,7 +11,7 @@ class EksBasicStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        eks_version = eks.KubernetesVersion.of("1.34")
+        eks_version = eks.KubernetesVersion.of("1.35")
         eks_cluster_name = "EksBasicStack"
 
         cluster_logging_setup = [
