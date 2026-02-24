@@ -4,7 +4,7 @@ import {
   AccessPolicy,
   AccessScopeType,
   Cluster,
-} from "@aws-cdk/aws-eks-v2-alpha";
+} from "aws-cdk-lib/aws-eks-v2";
 import { User, Role } from "aws-cdk-lib/aws-iam";
 import { KubectlV35Layer as KubectlLayer } from "@aws-cdk/lambda-layer-kubectl-v35";
 import { NodeGroups } from "./node-groups";

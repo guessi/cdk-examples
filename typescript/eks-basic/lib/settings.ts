@@ -5,7 +5,7 @@ import {
   IpFamily,
   ClusterLoggingTypes,
   DefaultCapacityType,
-} from "@aws-cdk/aws-eks-v2-alpha";
+} from "aws-cdk-lib/aws-eks-v2";
 
 export const clusterName = "cdk-eks-cluster";
 

@@ -1,6 +1,6 @@
 import { Construct } from "constructs";
 import { aws_eks, aws_iam } from "aws-cdk-lib";
-import { Cluster } from "@aws-cdk/aws-eks-v2-alpha";
+import { Cluster } from "aws-cdk-lib/aws-eks-v2";
 import {
   addonVersions,
   clusterVersion,

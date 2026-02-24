@@ -4,7 +4,7 @@ import {
   Cluster,
   NodegroupAmiType,
   CapacityType,
-} from "@aws-cdk/aws-eks-v2-alpha";
+} from "aws-cdk-lib/aws-eks-v2";
 
 import { InstanceType, InstanceClass, InstanceSize } from "aws-cdk-lib/aws-ec2";
 
