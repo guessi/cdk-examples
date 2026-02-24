@@ -23,7 +23,7 @@ for folder in $(find python -type d -depth 1); do
 
         # Handle special EKS packages for eks-basic
         if [ "${folder}" = "python/eks-basic" ]; then
-            $PIP install --upgrade aws-cdk.aws-eks-v2-alpha aws-cdk.lambda-layer-kubectl-v35
+            $PIP install --upgrade aws-cdk.lambda-layer-kubectl-v35
         fi
 
         # Get current versions
@@ -37,11 +37,9 @@ for folder in $(find python -type d -depth 1); do
 
         # Handle EKS-specific packages
         if [ "${folder}" = "python/eks-basic" ]; then
-            EKS_VERSION=$($PIP show aws-cdk.aws-eks-v2-alpha | grep "^Version:" | cut -d' ' -f2)
             KUBECTL_VERSION=$($PIP show aws-cdk.lambda-layer-kubectl-v35 | grep "^Version:" | cut -d' ' -f2)
 
             sed -i.bak2 \
-                -e "s/^aws-cdk\.aws-eks-v2-alpha==.*/aws-cdk.aws-eks-v2-alpha==$EKS_VERSION/" \
                 -e "s/^aws-cdk\.lambda-layer-kubectl-v35==.*/aws-cdk.lambda-layer-kubectl-v35==$KUBECTL_VERSION/" \
                 requirements.txt
             rm -f requirements.txt.bak2
