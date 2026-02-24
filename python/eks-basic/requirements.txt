@@ -1,4 +1,3 @@
 aws-cdk-lib==2.240.0
-aws-cdk.aws-eks-v2-alpha==2.240.0a0
 aws-cdk.lambda-layer-kubectl-v35==2.0.0
 constructs>=10.0.0,<11.0.0

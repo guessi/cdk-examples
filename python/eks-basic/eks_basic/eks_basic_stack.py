@@ -1,6 +1,6 @@
 from aws_cdk import Stack
 from aws_cdk import aws_ec2 as ec2
-from aws_cdk import aws_eks_v2_alpha as eks
+from aws_cdk import aws_eks_v2 as eks
 from aws_cdk.lambda_layer_kubectl_v35 import KubectlV35Layer as KubectlLayer
 
 from constructs import Construct
@@ -50,7 +50,7 @@ class EksBasicStack(Stack):
             disk_size=30
         )
 
-        # https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_eks_v2_alpha/Addon.html
+        # https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_eks_v2/Addon.html
         eks.Addon(self, "KubeProxy", cluster=cluster, addon_name="kube-proxy")
         eks.Addon(self, "VpcCni", cluster=cluster, addon_name="vpc-cni")
         eks.Addon(self, "CoreDns", cluster=cluster, addon_name="coredns")
