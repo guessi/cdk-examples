@@ -10,7 +10,7 @@ for folder in $(find typescript -type d -depth 1); do
     echo "[debug] entering folder $folder"
     pushd $folder
         $NPM update
-        $NCU --upgrade
+        $NCU --upgrade --reject typescript
         $NPM install
     popd
 done
