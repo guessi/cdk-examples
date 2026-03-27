@@ -25,7 +25,7 @@ export const clusterLogging = [
 ];
 
 // Chart version definitions
-export const chartVersionAwsLBC = "3.0.0";
+export const chartVersionAwsLBC = "3.1.0";
 
 // Managed Addons
 export const addonKubeProxy = "kube-proxy";
@@ -48,12 +48,12 @@ export const addonVersions = new Map<string, AddonConfig>([
     {
       enabled: true,
       versions: new Map([
-        [KubernetesVersion.V1_35, "v1.35.0-eksbuild.2"],
-        [KubernetesVersion.V1_34, "v1.34.3-eksbuild.2"],
-        [KubernetesVersion.V1_33, "v1.33.7-eksbuild.2"],
-        [KubernetesVersion.V1_32, "v1.32.11-eksbuild.2"],
-        [KubernetesVersion.V1_31, "v1.31.14-eksbuild.2"],
-        [KubernetesVersion.V1_30, "v1.30.14-eksbuild.20"],
+        [KubernetesVersion.V1_35, "v1.35.2-eksbuild.4"],
+        [KubernetesVersion.V1_34, "v1.34.5-eksbuild.2"],
+        [KubernetesVersion.V1_33, "v1.33.9-eksbuild.2"],
+        [KubernetesVersion.V1_32, "v1.32.13-eksbuild.2"],
+        [KubernetesVersion.V1_31, "v1.31.14-eksbuild.6"],
+        [KubernetesVersion.V1_30, "v1.30.14-eksbuild.24"],
       ]),
     },
   ],
@@ -62,12 +62,12 @@ export const addonVersions = new Map<string, AddonConfig>([
     {
       enabled: true,
       versions: new Map([
-        [KubernetesVersion.V1_35, "v1.13.2-eksbuild.1"],
-        [KubernetesVersion.V1_34, "v1.13.2-eksbuild.1"],
-        [KubernetesVersion.V1_33, "v1.13.2-eksbuild.1"],
-        [KubernetesVersion.V1_32, "v1.11.4-eksbuild.28"],
-        [KubernetesVersion.V1_31, "v1.11.4-eksbuild.28"],
-        [KubernetesVersion.V1_30, "v1.11.4-eksbuild.28"],
+        [KubernetesVersion.V1_35, "v1.13.2-eksbuild.4"],
+        [KubernetesVersion.V1_34, "v1.13.2-eksbuild.4"],
+        [KubernetesVersion.V1_33, "v1.13.2-eksbuild.4"],
+        [KubernetesVersion.V1_32, "v1.11.4-eksbuild.33"],
+        [KubernetesVersion.V1_31, "v1.11.4-eksbuild.33"],
+        [KubernetesVersion.V1_30, "v1.11.4-eksbuild.33"],
       ]),
     },
   ],
@@ -76,12 +76,12 @@ export const addonVersions = new Map<string, AddonConfig>([
     {
       enabled: true,
       versions: new Map([
-        [KubernetesVersion.V1_35, "v1.21.1-eksbuild.3"],
-        [KubernetesVersion.V1_34, "v1.21.1-eksbuild.3"],
-        [KubernetesVersion.V1_33, "v1.21.1-eksbuild.3"],
-        [KubernetesVersion.V1_32, "v1.21.1-eksbuild.3"],
-        [KubernetesVersion.V1_31, "v1.21.1-eksbuild.3"],
-        [KubernetesVersion.V1_30, "v1.21.1-eksbuild.3"],
+        [KubernetesVersion.V1_35, "v1.21.1-eksbuild.5"],
+        [KubernetesVersion.V1_34, "v1.21.1-eksbuild.5"],
+        [KubernetesVersion.V1_33, "v1.21.1-eksbuild.5"],
+        [KubernetesVersion.V1_32, "v1.21.1-eksbuild.5"],
+        [KubernetesVersion.V1_31, "v1.21.1-eksbuild.5"],
+        [KubernetesVersion.V1_30, "v1.21.1-eksbuild.5"],
       ]),
     },
   ],
@@ -104,12 +104,12 @@ export const addonVersions = new Map<string, AddonConfig>([
     {
       enabled: false,
       versions: new Map([
-        [KubernetesVersion.V1_35, "v1.55.0-eksbuild.1"],
-        [KubernetesVersion.V1_34, "v1.55.0-eksbuild.1"],
-        [KubernetesVersion.V1_33, "v1.55.0-eksbuild.1"],
-        [KubernetesVersion.V1_32, "v1.55.0-eksbuild.1"],
-        [KubernetesVersion.V1_31, "v1.55.0-eksbuild.1"],
-        [KubernetesVersion.V1_30, "v1.55.0-eksbuild.1"],
+        [KubernetesVersion.V1_35, "v1.57.1-eksbuild.1"],
+        [KubernetesVersion.V1_34, "v1.57.1-eksbuild.1"],
+        [KubernetesVersion.V1_33, "v1.57.1-eksbuild.1"],
+        [KubernetesVersion.V1_32, "v1.57.1-eksbuild.1"],
+        [KubernetesVersion.V1_31, "v1.57.1-eksbuild.1"],
+        [KubernetesVersion.V1_30, "v1.57.1-eksbuild.1"],
       ]),
     },
   ],
@@ -118,12 +118,12 @@ export const addonVersions = new Map<string, AddonConfig>([
     {
       enabled: false,
       versions: new Map([
-        [KubernetesVersion.V1_35, "v4.10.0-eksbuild.1"],
-        [KubernetesVersion.V1_34, "v4.10.0-eksbuild.1"],
-        [KubernetesVersion.V1_33, "v4.10.0-eksbuild.1"],
-        [KubernetesVersion.V1_32, "v4.10.0-eksbuild.1"],
-        [KubernetesVersion.V1_31, "v4.10.0-eksbuild.1"],
-        [KubernetesVersion.V1_30, "v4.10.0-eksbuild.1"],
+        [KubernetesVersion.V1_35, "v5.2.3-eksbuild.1"],
+        [KubernetesVersion.V1_34, "v5.2.3-eksbuild.1"],
+        [KubernetesVersion.V1_33, "v5.2.3-eksbuild.1"],
+        [KubernetesVersion.V1_32, "v5.2.3-eksbuild.1"],
+        [KubernetesVersion.V1_31, "v5.2.3-eksbuild.1"],
+        [KubernetesVersion.V1_30, "v5.2.3-eksbuild.1"],
       ]),
     },
   ],
@@ -132,11 +132,11 @@ export const addonVersions = new Map<string, AddonConfig>([
     {
       enabled: false,
       versions: new Map([
-        [KubernetesVersion.V1_35, "v0.8.1-eksbuild.1"],
-        [KubernetesVersion.V1_34, "v0.8.1-eksbuild.1"],
-        [KubernetesVersion.V1_33, "v0.8.1-eksbuild.1"],
-        [KubernetesVersion.V1_32, "v0.8.1-eksbuild.1"],
-        [KubernetesVersion.V1_31, "v0.8.1-eksbuild.1"],
+        [KubernetesVersion.V1_35, "v0.8.1-eksbuild.4"],
+        [KubernetesVersion.V1_34, "v0.8.1-eksbuild.4"],
+        [KubernetesVersion.V1_33, "v0.8.1-eksbuild.4"],
+        [KubernetesVersion.V1_32, "v0.8.1-eksbuild.4"],
+        [KubernetesVersion.V1_31, "v0.8.1-eksbuild.4"],
         [KubernetesVersion.V1_30, "v0.8.0-eksbuild.3"],
       ]),
     },
